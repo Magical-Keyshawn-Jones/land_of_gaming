@@ -1,0 +1,80 @@
+
+.knuckleBones {
+    padding: 1rem 3rem 0 3rem;
+    background-color: rgb(44, 44, 44);
+    color: white
+}
+
+.title {
+    text-align: center;
+    font-size: 4rem;
+    margin-bottom: 3rem;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+}
+
+.rules {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+}
+
+.rules h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.rules ul h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding: .7rem;
+    border: solid pink 1px;
+    border-radius: 2rem;
+    background-color: black;
+    width: fit-content;
+}
+
+.rules ul {
+    list-style-type: georgian;
+}
+
+.rules li {
+    margin-bottom: 1rem;
+    padding-right: 1rem;
+}
+
+.lineBorder {
+    background: linear-gradient(to bottom, white, black);
+    height: 1rem;
+    margin-bottom: 2rem;
+}
+
+.gameContainer {
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+
+.game {
+    width: 70rem;
+    background-color: aqua;
+}
+
+.playerOne {
+    background-color: blue;
+}
+
+.playerTwo {
+    background-color: blue;
+}
+
+.playerOne, .playerTwo {
+    width: 30rem;
+}
+
+.playerOne, .playerTwo, .game {
+    height: 50rem;
+}

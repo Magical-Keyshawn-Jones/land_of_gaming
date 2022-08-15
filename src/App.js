@@ -1,24 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import './KnuckleBones/knuckleBonesStyles.css'
 
+import { KnuckleBones, HomePage } from './Storage/appExports'
+import { Link, Routes, Route } from 'react-router-dom'
+
+// Games I want to make
+// TicTacTo, 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <main>
+
+      <header className='navBar'>
+        <h1>Games</h1>
+        <nav>
+          <Link to='/' className='link homeButton' >Home</Link>
+          <Link to='/KnuckleBones' className='link' >KnuckleBones</Link>
+        </nav>
       </header>
-    </div>
+
+      <Routes>
+        <Route path='/' element={<HomePage/>} />
+        <Route path='/KnuckleBones' element={<KnuckleBones/>} />
+      </Routes>
+
+    </main>
   );
 }
 

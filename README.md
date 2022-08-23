@@ -4,11 +4,9 @@ Website: https://land-of-gaming.vercel.app/
 
 Folders:
 
--Storage: 
+Storage: 
 *Holds redux stuff
-
-*Application exports
--Why? to keep things neat in the "App.js" import area  
+*Reuseable Modules
 
 Notes: 
 -Logic: when writing logic think like a human. Think about *literally* every step to complete the task

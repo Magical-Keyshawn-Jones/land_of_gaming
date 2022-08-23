@@ -1,30 +1,26 @@
 import './knuckleBonesStyles.css'
+import { useState } from 'react'
 
 // Notes
-// Player Two- Maybe make a random name generator or 
+// Player Two- Maybe make a random name generator or the user customize their opponent's name
+
 export default function KnuckleBones () {
 
-    class Game {
-        constructor(set) {
-            this.title = set.title 
-        }
+    // Initial Board Game Values for User & Opponent
+    const player1 = [
+        1,2,3,
+        4,5,6,
+        7,8,9
+    ]
 
-        shoutOut () {
-            console.log(this.title)
-        }
-    }
-    
-    const dahBaby = new Game({
-        title: 'DahBaby'
-    })
+    const player2 = [
+        1,2,3,
+        4,5,6,
+        7,8,9
+    ]
 
-    const VideoGame = (set) => {
-        return (
-            <div>
-                <h1>{set.title}</h1>
-            </div>
-        )
-    }
+    const [user, setUser] = useState(player1)
+    const [opponent, setOpponent] = useState(player2)
 
     return (
         <main className='knuckleBones' >
@@ -59,7 +55,6 @@ export default function KnuckleBones () {
 
                     <div className='playerTwo' >
                         <h1>Player Two</h1>
-                        {VideoGame(dahBaby)}
                     </div>
                 </section>
             </div>

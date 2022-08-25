@@ -6,7 +6,7 @@ import { Link, Routes, Route } from 'react-router-dom'
 
 // Games I want to make
 // TicTacTo,
-// Fortune Things (You shake it and it gives an answer) 
+// Fortune Things (You shake it and it gives an answer)  
 function App() {
   return (
     <main>

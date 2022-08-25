@@ -5,7 +5,8 @@ import { KnuckleBones, HomePage } from './Storage/appExports'
 import { Link, Routes, Route } from 'react-router-dom'
 
 // Games I want to make
-// TicTacTo, 
+// TicTacTo,
+// Fortune Things (You shake it and it gives an answer) 
 function App() {
   return (
     <main>

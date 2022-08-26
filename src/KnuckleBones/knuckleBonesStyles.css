@@ -56,23 +56,30 @@
     display: flex;
     justify-content: center;
     color: black;
+    border: solid black .5rem;
 }
 
 .game {
     width: 70rem;
-    background-color: aqua;
+    background-color: rgb(78, 78, 78);
 }
 
-.playerOne {
-    background-color: blue;
+
+
+.playerOneBox {
+    background-color: lightblue;
+    height: 50%;
 }
 
-.playerTwo {
-    background-color: blue;
+.playerTwoBox {
+    display: flex;
+    background-color: pink;
+    height: 50%;
 }
 
 .playerOne, .playerTwo {
     width: 30rem;
+    background-color: rgb(0, 0, 0);
 }
 
 .playerOne, .playerTwo, .game {

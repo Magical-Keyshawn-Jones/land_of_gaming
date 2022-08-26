@@ -11,22 +11,24 @@ export default function KnuckleBones () {
         1,2,3,
         4,5,6,
         7,8,9
-    ]
-
+     ]
+    
     const player2 = [
         1,2,3,
         4,5,6,
         7,8,9
     ]
-
+    
     const [user, setUser] = useState(player1)
     const [opponent, setOpponent] = useState(player2)
-
+    
     return (
         <main className='knuckleBones' >
             <h1 className='title' >Welcome to KnuckleBones</h1>
 
             <div className='body' >
+
+                {/* Rules */}
                 <section className='rules' >
                     <h1>Rules</h1>
                     <ul>
@@ -44,13 +46,24 @@ export default function KnuckleBones () {
 
                 <div className='lineBorder' ></div>
 
+                {/* Board Game */}
                 <section className='gameContainer' >
                     <div className='playerOne' >
                         <h1>Player One</h1>
                     </div>
 
                     <div className='game' >
-                        <h1>Insert Game here!</h1>
+                        <div className='playerTwoBox' >
+                            <div>
+                                <p>Testing Box</p>
+                            </div>
+                        </div>
+
+                        <div className='playerOneBox' >
+                            <div>
+                                <p>Testing Box</p>
+                            </div>
+                        </div>
                     </div>
 
                     <div className='playerTwo' >

@@ -7,15 +7,15 @@ import { Link, Routes, Route } from 'react-router-dom'
 // Games I want to make
 // TicTacTo,
 // Fortune Things (You shake it and it gives an answer)  
+
 function App() {
   return (
     <main>
-
       <header className='navBar'>
         <h1>Games</h1>
         <nav>
-          <Link to='/' className='link homeButton' >Home</Link>
-          <Link to='/KnuckleBones' className='link' >KnuckleBones</Link>
+          <Link to='/' className='link homeButton' > Home </Link>
+          <Link to='/KnuckleBones' className='link' > KnuckleBones </Link>
         </nav>
       </header>
 

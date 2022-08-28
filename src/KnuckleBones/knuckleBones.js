@@ -18,6 +18,17 @@ export default function KnuckleBones () {
         4,5,6,
         7,8,9
     ]
+
+    // Box function
+    function box (index) {
+        const box = (
+            <div className='box' key={index}>
+                <p> Box {index} </p>
+            </div>
+        )
+
+        return box
+    }
     
     const [user, setUser] = useState(player1)
     const [opponent, setOpponent] = useState(player2)
@@ -54,15 +65,19 @@ export default function KnuckleBones () {
 
                     <div className='game' >
                         <div className='playerTwoBox' >
-                            <div>
-                                <p>Testing Box</p>
-                            </div>
+                            <section>
+                                {opponent.map(item => {
+                                    return box(item)
+                                })}
+                            </section>
                         </div>
 
                         <div className='playerOneBox' >
-                            <div>
-                                <p>Testing Box</p>
-                            </div>
+                           <section>
+                            {user.map(item => {
+                                return box(item)
+                            })}
+                           </section>
                         </div>
                     </div>
 

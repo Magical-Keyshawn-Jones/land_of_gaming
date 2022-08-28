@@ -2,7 +2,8 @@ import './App.css';
 
 // KnuckleBones Imports
 import { 
-  one, two, three, four, five, six, useDiceNumber 
+  one, two, three, four, five, six, box, 
+  useDiceNumber, Players
 } from './KnuckleBones/knuckleBonesLogic';
 
 // Applications Imports
@@ -34,6 +35,8 @@ function App() {
         four={four}
         five={five}
         six={six}
+        box={box}
+        Players={Players}
         useDiceNumber={useDiceNumber}
         />} />
       </Routes>

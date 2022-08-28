@@ -1,20 +1,30 @@
+/* 
+    Classes: 
+    -constructors are arguments
+    -supers steal parent constructors
+    -children inherit all methods
+*/
+class Players {
+    constructor(player) {
+        this.player = player 
+    }
 
-class Game {
-    constructor(set) {
-        this.title = set.title 
+    name () {
+        console.log(this.player)
     }
 }
 
-const dahBaby = new Game({
-    title: 'DahBaby'
-})
+const dahBaby = new Players('dahBaby')
 
-const VideoGame = (set) => {
-    return (
-        <div>
-            <h1>{set.title}</h1>
-        </div>
-    )
+class User extends Players {
+    constructor(player, score) {
+        super(player)
+        this.score = score
+    }
 }
 
-console.log(VideoGame(dahBaby))
+const doorknob = new User('doorknob', 10)
+console.log(doorknob)
+console.log(dahBaby)
+dahBaby.name()
+doorknob.name()

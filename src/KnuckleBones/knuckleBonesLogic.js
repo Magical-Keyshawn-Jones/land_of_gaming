@@ -27,6 +27,11 @@ import { useState } from 'react'
     
     + I should try to use classes for this
     + A dice function - on click changes the box to a dice number
+    + If dice is empty add green border else nothing
+    + Have player type their name in first
+        -install a 20 character limit
+        -Have the player select computer or human 
+    + Set boundaries to only allow players to select their own
 */
 
 // Dice Numbers
@@ -102,18 +107,69 @@ function six () {
 
 // Custom hook for changing box numbers
 function useDiceNumber (index, numberFunction) {
+    // eslint-disable-next-line
     const [user, setUser] = useState([
         1,2,3,
         4,5,6,
         7,8,9
      ])
-
+    
      function changeNumber (index, numberFunction) {
         user[index] = numberFunction
      }
 
      return [user, changeNumber]
+}
+
+// Box function
+function box (item, index) {
+
+    if (item !== Number(item)) {
+        const customBox = (
+            <div className='box' key={index}>
+                {item}
+            </div>
+        )
+    
+        return customBox
+    
+    } else {
+        const box = (
+            <div className='box' key={index}>
+                {''}
+            </div>
+        )
+    
+        return box
     }
+    
+
+}
+
+// Random Number function 
+function randomNumber() {
+    return Math.floor(Math.random() * 7)
+}
+
+// Classes for Players 
+class Players {
+    constructor(name, score) {
+        this.name = name
+        this.score = score
+    }
+
+    addPoints (number) {
+        this.score += number 
+    }
+
+    deductPoints (number) {
+        this.score -= number
+    }
+
+    resetScore() {
+        this.score = 0
+    }
+}
 
 export {
     one,
@@ -122,5 +178,7 @@ export {
     four,
     five,
     six,
+    box,
+    Players,
     useDiceNumber
 }

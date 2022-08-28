@@ -67,19 +67,13 @@
 
 
 .playerOneBox {
-    background-color: lightblue;
+    background-color: darkgoldenrod;
     height: 50%;  
 }
 
 /* fr- used to flexibly size themselves
     grid-template-columns: 1fr(defines size of left column) 2fr(define size of all right columns)
  */
-/* .playerOneBox section {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(3, 10rem); 
-    grid-gap: 1rem;
-} */
 
 .playerOneBox section {
     display: grid;
@@ -113,9 +107,58 @@
     justify-content: center;
     width: 7.5rem;
     height: 7.5rem;
-    color: white;
     border: solid black 2px;
     background-color: black;
+}
+
+.box:hover {
+    border: solid rgb(4, 255, 4) 3px;    
+}
+
+.playerTwoBox {
+    display: flex;
+    background-color: darkorchid;
+    height: 50%;
+}
+
+.playerOne, .playerTwo {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    width: 30rem;
+    background-color: rgb(0, 0, 0);
+}
+
+/* Player 1 */
+.playerOne, .playerTwo, .game {
+    height: 50rem;
+}
+
+.playerOneScore, .playerTwoScore {
+    text-align: center;
+    font-size: 4rem;
+    color: black;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5rem;
+}
+
+.playerOneDiceNumber, .playerTwoDiceNumber {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    width: 25rem;
+    background-color: gray;
+}
+
+.playerOneName, .playerTwoName {
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 5rem;
+    font-size: 2.3rem;
+    color: black;
 }
 
 /* Dice 1 */
@@ -250,21 +293,7 @@
     grid-gap: .4rem;
 }
 
+/* Dice 6 gap */
 #gap6 {
     grid-gap: .4rem;
-}
-
-.playerTwoBox {
-    display: flex;
-    background-color: pink;
-    height: 50%;
-}
-
-.playerOne, .playerTwo {
-    width: 30rem;
-    background-color: rgb(0, 0, 0);
-}
-
-.playerOne, .playerTwo, .game {
-    height: 50rem;
 }

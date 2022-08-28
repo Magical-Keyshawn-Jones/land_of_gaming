@@ -9,34 +9,14 @@ import './knuckleBonesStyles.css'
 
 export default function KnuckleBones (props) {
     const {
-        one, two, three, four, five, six, useDiceNumber
+        one, two, three, four, five, six, box, 
+        useDiceNumber, Players
     } = props
     
     const [user, setUser] = useDiceNumber()
     const [opponent, setOpponent] = useDiceNumber()
-
-    // Box function
-    function box (index) {
-
-        if (index !== Number(index)) {
-            const customBox = (
-                <div className='box' key={index}>
-                    {index}
-                </div>
-            )
-
-            return customBox
-        } else {
-            const box = (
-                <div className='box' key={index}>
-                    {six()}
-                </div>
-            )
-
-            return box
-        }
-
-    }
+    const score1 = new Players('user1', 0)
+    const score2 = new Players('opponent2', 0)
 
     return (
         <main className='knuckleBones' >
@@ -65,29 +45,47 @@ export default function KnuckleBones (props) {
                 {/* Board Game */}
                 <section className='gameContainer' >
                     <div className='playerOne' >
-                        <h1>Player One</h1>
-                    </div>
+                        <div className='playerOneScore'>
+                            <p>Points</p>
+                            {score1.score}
+                        </div>
+                        <div className='playerOneDiceNumber'>
+                            {box(four(), 1)}
+                        </div>
+                        <div className='playerOneName'>
+                            <h1>Doorknob</h1>
+                        </div>
+                    </div> 
 
                     <div className='game' >
                         <div className='playerTwoBox' >
                             <section>
-                                {opponent.map(item => {
-                                    return box(item)
+                                {opponent.map((item, index) => {
+                                    return box(item, index)
                                 })}
                             </section>
                         </div>
 
                         <div className='playerOneBox' >
                            <section>
-                            {user.map(item => {
-                                return box(item)
+                            {user.map((item, index) => {
+                                return box(item, index)
                             })}
                            </section>
                         </div>
                     </div>
 
                     <div className='playerTwo' >
-                        <h1>Player Two</h1>
+                        <div className='playerTwoName'>
+                            <p>Player Two name</p>
+                        </div>
+                        <div className='playerTwoDiceNumber'>
+                            {box('', 1)}
+                        </div>
+                        <div className='playerTwoScore'>
+                            <p>Points</p>
+                            {score2.score}
+                        </div>
                     </div>
                 </section>
             </div>

@@ -10,3 +10,6 @@ Storage:
 
 Notes: 
 -Logic: when writing logic think like a human. Think about *literally* every step to complete the task
+-Design: I could be better with colors, haha
+
+Games Planned: KnuckleBones(current working on), tick tac toe, rock paper scissors, hangman

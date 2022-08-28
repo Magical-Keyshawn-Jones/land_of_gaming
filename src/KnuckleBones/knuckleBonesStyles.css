@@ -118,20 +118,140 @@
     background-color: black;
 }
 
-.red {
-    background-color: red;
+/* Dice 1 */
+.one {
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5rem;
+    grid-area: g
 }
 
-.darkBlue {
-    background-color: darkblue;
+/* Dice 2 */
+.two {
+    background-color: white;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 5rem;
 }
 
-.purple {
-    background-color: purple;
+.two:nth-child(1) {
+    grid-area: four
+}
+.two:nth-child(2) {
+    grid-area: six
 }
 
-.green {
-    background-color: green;
+/* Dice 3 */
+.three {
+    background-color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 5rem;
+}
+
+.three:nth-child(1) {
+    grid-area: one;
+}
+.three:nth-child(2) {
+    grid-area: five;
+}
+.three:nth-child(3) {
+    grid-area: nine;
+}
+
+/* Dice 4 */
+.four {
+    background-color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 5rem;   
+}
+
+.four:nth-child(1) {
+    grid-area: one
+}
+.four:nth-child(2) {
+    grid-area: three
+}
+.four:nth-child(3) {
+    grid-area: seven
+}
+.four:nth-child(4) {
+    grid-area: nine
+}
+
+/* Dice 5 */
+
+.five {
+    background-color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 5rem; 
+}
+
+.five:nth-child(1) {
+    grid-area: one
+}
+.five:nth-child(2) {
+    grid-area: three
+}
+.five:nth-child(3) {
+    grid-area: five
+}
+.five:nth-child(4) {
+    grid-area: seven
+}
+.five:nth-child(5) {
+    grid-area: nine
+}
+
+/* Dice 6 */
+
+.six {
+    background-color: white;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 5rem; 
+}
+
+.six:nth-child(1) {
+    grid-area: one
+}
+.six:nth-child(2) {
+    grid-area: three
+}
+.six:nth-child(3) {
+    grid-area: four
+}
+.six:nth-child(4) {
+    grid-area: six
+}
+.six:nth-child(5) {
+    grid-area: seven
+}
+.six:nth-child(6) {
+    grid-area: nine
+}
+
+.dice {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+    "one . three"
+    "four five six"
+    "seven . nine";
+    justify-content: center;
+}
+
+/* Dice 3 gap */
+#gap3 {
+    grid-gap: .4rem;
+}
+
+#gap6 {
+    grid-gap: .4rem;
 }
 
 .playerTwoBox {

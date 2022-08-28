@@ -1,38 +1,43 @@
 import './knuckleBonesStyles.css'
-import { useState } from 'react'
 
-// Notes
-// Player Two- Maybe make a random name generator or the user customize their opponent's name
+/*Notes
+    Player Two- Maybe make a random name generator or the user customize their opponent's name
+    Create a custom hook that 
+    -takes in the number you want to change,
+    -a function you want to change it to
+*/
 
-export default function KnuckleBones () {
-
-    // Initial Board Game Values for User & Opponent
-    const player1 = [
-        1,2,3,
-        4,5,6,
-        7,8,9
-     ]
+export default function KnuckleBones (props) {
+    const {
+        one, two, three, four, five, six, useDiceNumber
+    } = props
     
-    const player2 = [
-        1,2,3,
-        4,5,6,
-        7,8,9
-    ]
+    const [user, setUser] = useDiceNumber()
+    const [opponent, setOpponent] = useDiceNumber()
 
     // Box function
     function box (index) {
-        const box = (
-            <div className='box' key={index}>
-                <p> Box {index} </p>
-            </div>
-        )
 
-        return box
+        if (index !== Number(index)) {
+            const customBox = (
+                <div className='box' key={index}>
+                    {index}
+                </div>
+            )
+
+            return customBox
+        } else {
+            const box = (
+                <div className='box' key={index}>
+                    {six()}
+                </div>
+            )
+
+            return box
+        }
+
     }
-    
-    const [user, setUser] = useState(player1)
-    const [opponent, setOpponent] = useState(player2)
-    
+
     return (
         <main className='knuckleBones' >
             <h1 className='title' >Welcome to KnuckleBones</h1>

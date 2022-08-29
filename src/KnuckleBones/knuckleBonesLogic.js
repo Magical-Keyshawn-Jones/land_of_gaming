@@ -114,41 +114,34 @@ function useDiceNumber (index, numberFunction) {
         7,8,9
      ])
     
-     function changeNumber (index, numberFunction) {
-        user[index] = numberFunction
+     function changeNumber (index, number) {
+        // user[index] = number
+        switch (number){
+            case 1:
+                user[index] = one()
+            break;
+            case 2:
+                user[index] = two()
+            break;
+            case 3: 
+                user[index] = three()
+            break;
+            case 4:
+                user[index] = four()
+            break;
+            case 5:
+                user[index] = five()
+            break;
+            case 
+            6: 
+                user[index] = six()
+            break;
+            default: 
+                user[index] = number
+        }
      }
 
-     return [user, changeNumber]
-}
-
-// Box function
-function box (item, index) {
-
-    if (item !== Number(item)) {
-        const customBox = (
-            <div className='box' key={index}>
-                {item}
-            </div>
-        )
-    
-        return customBox
-    
-    } else {
-        const box = (
-            <div className='box' key={index}>
-                {''}
-            </div>
-        )
-    
-        return box
-    }
-    
-
-}
-
-// Random Number function 
-function randomNumber() {
-    return Math.floor(Math.random() * 7)
+     return [user, changeNumber, setUser]
 }
 
 // Classes for Players 
@@ -178,7 +171,6 @@ export {
     four,
     five,
     six,
-    box,
     Players,
     useDiceNumber
 }

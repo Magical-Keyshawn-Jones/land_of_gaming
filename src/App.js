@@ -1,8 +1,10 @@
 import './App.css';
+import { useEffect } from 'react';
+import { connect, useDispatch } from 'react-redux';
 
 // KnuckleBones Imports
 import { 
-  one, two, three, four, five, six, box, 
+  one, two, three, four, five, six,
   useDiceNumber, Players
 } from './KnuckleBones/knuckleBonesLogic';
 
@@ -15,7 +17,18 @@ import { Link, Routes, Route } from 'react-router-dom'
 // Fortune Things (You shake it and it gives an answer)  
 // This could be optimized(honestly, look better) by not sending everything through the Parent and instead send to directly to the child I'm sending it to
 
-function App() {
+function App(props) {
+
+  const {
+    kbUserBoxes
+  } = props
+
+  // console.log(kbUserBoxes)
+  // const dispatch = useDispatch()
+  // useEffect(() => {
+  //   dispatch(setBox)
+  // }, [])
+
   return (
     <main>
       <header className='navBar'>
@@ -35,8 +48,8 @@ function App() {
         four={four}
         five={five}
         six={six}
-        box={box}
         Players={Players}
+        kbUserBoxes={kbUserBoxes}
         useDiceNumber={useDiceNumber}
         />} />
       </Routes>
@@ -45,4 +58,12 @@ function App() {
   );
 }
 
-export default App;
+// Redux Storage Container 
+function GrabbingStorage(state) {
+  return {
+    kbUserBoxes: state.kbUserBoxes
+  }
+}
+
+// Connecting storage to the App
+export default connect(GrabbingStorage)(App)

@@ -288,6 +288,10 @@
     justify-content: center;
 }
 
+.display {
+    display: none
+}
+
 /* Dice 3 gap */
 #gap3 {
     grid-gap: .4rem;

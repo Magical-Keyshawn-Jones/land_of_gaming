@@ -1,11 +1,9 @@
 import './App.css';
-import { useEffect } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 
 // KnuckleBones Imports
 import { 
-  one, two, three, four, five, six,
-  useDiceNumber, Players
+  one, two, three, four, five, six, Players
 } from './KnuckleBones/knuckleBonesLogic';
 
 // Applications Imports
@@ -17,17 +15,7 @@ import { Link, Routes, Route } from 'react-router-dom'
 // Fortune Things (You shake it and it gives an answer)  
 // This could be optimized(honestly, look better) by not sending everything through the Parent and instead send to directly to the child I'm sending it to
 
-function App(props) {
-
-  const {
-    kbUserBoxes
-  } = props
-
-  // console.log(kbUserBoxes)
-  // const dispatch = useDispatch()
-  // useEffect(() => {
-  //   dispatch(setBox)
-  // }, [])
+function App() {
 
   return (
     <main>
@@ -49,8 +37,6 @@ function App(props) {
         five={five}
         six={six}
         Players={Players}
-        kbUserBoxes={kbUserBoxes}
-        useDiceNumber={useDiceNumber}
         />} />
       </Routes>
 

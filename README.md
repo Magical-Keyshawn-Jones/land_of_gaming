@@ -7,6 +7,10 @@ Folders:
 Storage: 
 *Holds redux stuff
 *Reuseable Modules
+*My Test Files for testing random things
+
+Storage/Redux:
+*Currently not being used for anything. I optimized the website
 
 Notes: 
 -Logic: when writing logic think like a human. Think about *literally* every step to complete the task

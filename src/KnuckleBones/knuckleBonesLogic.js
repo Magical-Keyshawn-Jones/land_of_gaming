@@ -105,50 +105,12 @@ function six () {
     return six
 }
 
-// Custom hook for changing box numbers
-function useDiceNumber (index, numberFunction) {
-    // eslint-disable-next-line
-    const [user, setUser] = useState([
-        1,2,3,
-        4,5,6,
-        7,8,9
-     ])
-    
-     function changeNumber (index, number) {
-        // user[index] = number
-        switch (number){
-            case 1:
-                user[index] = one()
-            break;
-            case 2:
-                user[index] = two()
-            break;
-            case 3: 
-                user[index] = three()
-            break;
-            case 4:
-                user[index] = four()
-            break;
-            case 5:
-                user[index] = five()
-            break;
-            case 
-            6: 
-                user[index] = six()
-            break;
-            default: 
-                user[index] = number
-        }
-     }
-
-     return [user, changeNumber, setUser]
-}
-
 // Classes for Players 
 class Players {
-    constructor(name, score) {
+    constructor(name, score, myTurn) {
         this.name = name
         this.score = score
+        this.myTurn = myTurn
     }
 
     addPoints (number) {
@@ -162,6 +124,10 @@ class Players {
     resetScore() {
         this.score = 0
     }
+
+    turn() {
+        this.myTurn = !this.myTurn
+    }
 }
 
 export {
@@ -172,5 +138,4 @@ export {
     five,
     six,
     Players,
-    useDiceNumber
 }

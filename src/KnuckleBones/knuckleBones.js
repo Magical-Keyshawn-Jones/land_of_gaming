@@ -1,5 +1,5 @@
 import './knuckleBonesStyles.css'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 /*Notes
     Player Two- Maybe make a random name generator or the user customize their opponent's name
@@ -13,8 +13,18 @@ export default function KnuckleBones (props) {
         one, two, three, four, five, six, Players
     } = props
     
-    const [user, setUser] = useState([1,2,3,4,5,6,7,8,9])
-    const [opponent, setOpponent] = useState([1,2,3,4,5,6,7,8,9])
+    // initial Numbers/String Array
+    const initialNumbers = [1,2,3,4,5,6,7,8,9]
+    const initialString = ['','','','','','','','','']
+
+    const [user, setUser] = useState(initialNumbers)
+    const [userNumbers, setUserNumbers] = useState(initialNumbers)
+    // const [userNumbers, setUserNumbers] = useState(['','','','','','','','',''])
+
+    const [opponent, setOpponent] = useState(initialNumbers)
+    const [opponentNumbers, setOpponentNumbers] = useState(initialNumbers)
+    // const [opponentNumbers, setOpponentNumbers] = useState(['','','','','','','','',''])
+
     const [diceSelector, setDiceSelector] = useState(diceCalculator())
     const score1 = new Players('user1', 0)
     const score2 = new Players('opponent2', 0)
@@ -30,8 +40,8 @@ function finishedGame (player, name) {
             console.log('User Wins!')
             score1.resetScore()
             score2.resetScore()
-            setUser([1,2,3,4,5,6,7,8,9])
-            setOpponent([1,2,3,4,5,6,7,8,9])
+            setUser(initialNumbers)
+            setOpponent(initialNumbers)
             return true
         } else {
             return false
@@ -41,8 +51,8 @@ function finishedGame (player, name) {
             console.log('Opponent Wins!')
             score1.resetScore()
             score2.resetScore()
-            setUser([1,2,3,4,5,6,7,8,9])
-            setOpponent([1,2,3,4,5,6,7,8,9])
+            setUser(initialNumbers)
+            setOpponent(initialNumbers)
             return true
         } else {
             return false
@@ -99,22 +109,41 @@ function box2 (item, index) {
 
 // Dice Calculator- determines what dice each the player can play
 function diceCalculator() {
+
      const number = Math.floor(Math.random() * 6)
      switch(number) {
          case 0:
-             return box(one(), number)
+            return {
+                 box: box(one(), number),
+                 currentNumber: number + 1
+            }
          case 1: 
-            return box(two(), number)
+            return {
+                box: box(two(), number),
+                currentNumber: number + 1
+            }
         case 2: 
-            return box(three(), number)
+            return {
+                box: box(three(), number),
+                currentNumber: number + 1
+            }
          case 3: 
-             return box(four(), number)
+             return {
+                box: box(four(), number),
+                currentNumber: number + 1
+            }
          case 4: 
-             return box(five(), number)
+             return {
+                box: box(five(), number),
+                currentNumber: number + 1
+            }
          case 5: 
-            return box(six(), number)
+            return {
+                box: box(six(), number),
+                currentNumber: number + 1
+            }
          default:
-             console.log('nothing happened') 
+            console.log('nothing happened') 
     }
 }
 
@@ -142,7 +171,7 @@ function box (item, index) {
 }
 
 
-// click Handlers
+// User Click Handler
 function userSelector(index) {
     if (turn === false) {
         return
@@ -151,23 +180,111 @@ function userSelector(index) {
     const list = []
     user.forEach(number => list.push(number))
 
-    list[index] = diceSelector
+    list[index] = diceSelector.box
+    userNumbers[index] = diceSelector.currentNumber
+    boxMatcher()
     setUser(list)
+    setTurn(!turn)
+    setDiceSelector(diceCalculator())
+    finishedGame(user, 'user')
+}
+
+// Stuff for AI
+if (turn === false) {
+    
+    // Sending state to closed scope variable
+    const list = []
+    opponent.forEach(numbers => list.push(numbers))
+    
+    // Variable with only numbers from the list
+    const goodNumbers = list.filter(number => number === Number(number))
+    // Randomly Selecting a number from the goodNumbers
+    
+    
+    const randomNumber = Math.floor(Math.random() * goodNumbers.length)
+    // Storing random index
+    const index =list.indexOf(goodNumbers[randomNumber])
+    // Storing CurrentNumber
+    const diceNumber = diceSelector.currentNumber
+    
+    list[index] = diceSelector.box
+    opponentNumbers[index] = diceNumber
+    setOpponent(list)
+    boxMatcher(columnSelector(diceNumber), diceNumber)
+    finishedGame(opponent, 'opponent')
     setTurn(!turn)
     setDiceSelector(diceCalculator())
 }
 
-if (turn === false) {
-    const numbers = Math.floor(Math.random() * 9)
+// Checks if box matches
+ function boxMatcher (boxIndex, currentNumber) {
+    //     1,2,3,
+    //     4,5,6,
+    //     7,8,9
 
-    const list = []
-    opponent.forEach(numbers => list.push(numbers))
+    console.log(currentNumber)
 
-    list[numbers] = diceSelector
-    setOpponent(list)
-    finishedGame(user, 'user')
-    setTurn(!turn)
-    setDiceSelector(diceCalculator())
+    // User Columns
+    const userC1 = userNumbers.filter((number, index) => {
+        return index === 0 || index === 3 || index === 6 
+    })
+    const userC2 = userNumbers.filter((number, index) => {
+        return index === 1 || index === 4 || index === 7
+    })
+    const userC3 = userNumbers.filter((number, index) => {
+        return index === 2 || index === 5 || index === 8
+    })
+    const userColumns = [userC1, userC2, userC3]
+    
+    // Opponent Columns
+    const opponentC1 = opponentNumbers.filter((number, index) => {
+        return index === 0 || index === 3 || index === 6
+    })
+    const opponentC2 = opponentNumbers.filter((number, index) => {
+        return index === 1 || index === 4 || index === 7
+    })
+    const opponentC3 = opponentNumbers.filter((number, index) => {
+        return index === 2 || index === 5 || index === 8
+    })
+    const opponentColumns = [opponentC1, opponentC2, opponentC3]
+
+    const matchingNumbers = opponentColumns[0].filter(number => number === currentNumber)
+
+    if (matchingNumbers.length === 0) {
+           return 
+    } else {
+        console.log(matchingNumbers)
+    }
+
+ }
+
+function columnSelector (number) {
+    //     1,2,3,
+    //     4,5,6,
+    //     7,8,9
+
+    switch (number) {
+        case 1:
+            return 0
+        case 4:
+            return 0
+        case 7:
+            return 0
+        case 2:
+            return 1
+        case 5:
+            return 1
+        case 8:
+            return 1
+        case 3:
+            return 2
+        case 6:
+            return 2
+        case 9:
+            return 2
+        default:
+            return 'nothing happened'
+    }
 }
 
     return (
@@ -202,7 +319,7 @@ if (turn === false) {
                             {score1.score}
                         </div>
                         <div className='playerOneDiceNumber'>
-                            {turn === true ? diceSelector : box(1,1)}
+                            {turn === true ? diceSelector.box : box(1,1)}
                         </div>
                         <div className='playerOneName'>
                             <h1>Doorknob</h1>
@@ -232,7 +349,7 @@ if (turn === false) {
                             <p>Player Two name</p>
                         </div>
                         <div className='playerTwoDiceNumber'>
-                            {turn === true ? box(1,1) : diceSelector}
+                            {turn === true ? box(1,1) : diceSelector.box}
                         </div>
                         <div className='playerTwoScore'>
                             <p>Points</p>

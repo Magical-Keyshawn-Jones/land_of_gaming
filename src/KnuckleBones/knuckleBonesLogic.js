@@ -2,8 +2,8 @@ import { useState } from 'react'
 /*
     Notes
 
-    1) Checks if all columns are full for either team
-    2) dice roll function- determines what number is on the dice
+    1)* Checks if all columns are full for either team 
+    2)* dice roll function- determines what number is on the dice
     3) check Columns function- checks if a column is empty
         If column is empty only look at the ones that are not empty
         

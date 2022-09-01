@@ -17,6 +17,7 @@ export default function KnuckleBones (props) {
     const initialNumbers = [1,2,3,4,5,6,7,8,9]
     const initialString = ['','','','','','','','','']
 
+    const [columnNumber, setColumnNumber] = useState()
     const [user, setUser] = useState(initialNumbers)
     const [userNumbers, setUserNumbers] = useState(initialNumbers)
     // const [userNumbers, setUserNumbers] = useState(['','','','','','','','',''])
@@ -51,8 +52,8 @@ function finishedGame (player, name) {
             console.log('Opponent Wins!')
             score1.resetScore()
             score2.resetScore()
-            setUser(initialNumbers)
-            setOpponent(initialNumbers)
+            setUser([1,2,3,4,5,6,7,8,9])
+            setOpponent([1,2,3,4,5,6,7,8,9])
             return true
         } else {
             return false
@@ -186,7 +187,6 @@ function userSelector(index) {
     setUser(list)
     setTurn(!turn)
     setDiceSelector(diceCalculator())
-    finishedGame(user, 'user')
 }
 
 // Stuff for AI
@@ -206,23 +206,25 @@ if (turn === false) {
     const index =list.indexOf(goodNumbers[randomNumber])
     // Storing CurrentNumber
     const diceNumber = diceSelector.currentNumber
+
+    // Storing Index 
+    // const diceIndex = columnSelector(diceNumber)
+
+    setColumnNumber(columnSelector(diceNumber))
     
     list[index] = diceSelector.box
     opponentNumbers[index] = diceNumber
     setOpponent(list)
-    boxMatcher(columnSelector(diceNumber), diceNumber)
-    finishedGame(opponent, 'opponent')
+    boxMatcher(diceNumber)
     setTurn(!turn)
     setDiceSelector(diceCalculator())
 }
 
 // Checks if box matches
- function boxMatcher (boxIndex, currentNumber) {
+ function boxMatcher (currentNumber) {
     //     1,2,3,
     //     4,5,6,
     //     7,8,9
-
-    console.log(currentNumber)
 
     // User Columns
     const userC1 = userNumbers.filter((number, index) => {
@@ -248,7 +250,9 @@ if (turn === false) {
     })
     const opponentColumns = [opponentC1, opponentC2, opponentC3]
 
-    const matchingNumbers = opponentColumns[0].filter(number => number === currentNumber)
+    console.log(opponentColumns)
+
+    const matchingNumbers = opponentColumns[0].filter(number => number === Number(number))
 
     if (matchingNumbers.length === 0) {
            return 
@@ -286,6 +290,10 @@ function columnSelector (number) {
             return 'nothing happened'
     }
 }
+
+useEffect(() => {
+    finishedGame(user, 'user')
+})
 
     return (
         <main className='knuckleBones' >

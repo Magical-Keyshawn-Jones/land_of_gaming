@@ -13,57 +13,51 @@ export default function KnuckleBones (props) {
         one, two, three, four, five, six, Players
     } = props
     
-    // initial Numbers/String Array
+    // initial values for state
     const initialNumbers = [1,2,3,4,5,6,7,8,9]
-    const initialString = ['','','','','','','','','']
+    const initialRandomNumbers = [7,8,9,10,11,12,13,14,15]
 
     const [user, setUser] = useState(initialNumbers)
-    // let userNumbers = [1,2,3,4,5,6,7,8,9]
-    // const userNumbers = [1,2,3,4,5,6,7,8,9]
     const [userNumbers, setUserNumbers] = useState(initialNumbers)
-    // const [userNumbers, setUserNumbers] = useState(['','','','','','','','',''])
 
     const [opponent, setOpponent] = useState(initialNumbers)
-    // let opponentNumbers = [1,2,3,4,5,6,7,8,9 ]
-    // const opponentNumbers = [1,2,3,4,5,6,7,8,9]
-    const [opponentNumbers, setOpponentNumbers] = useState(initialNumbers)
-    // const [opponentNumbers, setOpponentNumbers] = useState(['','','','','','','','',''])
+    const [opponentNumbers, setOpponentNumbers] = useState(initialRandomNumbers)
 
     const [diceSelector, setDiceSelector] = useState(diceCalculator())
-    const score1 = new Players('user1', 0)
-    const score2 = new Players('opponent2', 0)
+    const [score1, setScore1] = useState(0)
+    const [score2, setScore2] = useState(0)
     const [turn, setTurn] = useState(true)
 
 // Checks if All columns are full or empty
-function finishedGame (player, name) {
+function finishedGame () {
 
-    const truth = player.filter(item => item === Number(item))
+    const userTruth = user.filter(item => item === Number(item))
+    const opponentTruth = opponent.filter(item => item === Number(item))
 
-    if(name === 'user') {
-        if (!truth.length) {
+    if(turn === true) {
+        if (!userTruth.length) {
             console.log('User Wins!')
-            score1.resetScore()
-            score2.resetScore()
+            setScore1(0)
+            setScore2(0)
             setUser(initialNumbers)
-            userNumbers = [1,2,3,4,5,6,7,8,9]
-            // setUserNumbers(initialNumbers)
+            setUserNumbers(initialRandomNumbers)
 
             setOpponent(initialNumbers)
-            // setOpponentNumbers(initialNumbers)
+            setOpponentNumbers(initialRandomNumbers)
             return true
         } else {
             return false
         }
     } else {
-        if (!truth.length) {
+        if (!opponentTruth.length) {
             console.log('Opponent Wins!')
-            score1.resetScore()
-            score2.resetScore()
+            setScore1(0)
+            setScore2(0)
             setUser(initialNumbers)
-            // setUserNumbers(initialNumbers)
-            // opponentNumbers = [1,2,3,4,5,6,7,8,9] 
+            setUserNumbers(initialNumbers)
+
             setOpponent(initialNumbers)
-            // setOpponentNumbers(initialNumbers)
+            setOpponentNumbers(initialNumbers)
             return true
         } else {
             return false
@@ -188,32 +182,31 @@ function userSelector(index) {
         return
     }
 
+    // Storing userBoxes
     const list = []
     user.forEach(number => list.push(number))
     
+    // Storing userNumbers
     const numberList = []
     userNumbers.forEach(number => numberList.push(number))
 
-    const diceNumber = diceSelector.currentNumber
-    
     list[index] = diceSelector.box
-    // userNumbers[index] = diceNumber
-    numberList[index] = diceNumber
+    numberList[index] = diceSelector.currentNumber
     
-    setUserNumbers(numberList)
-    boxMatcher()
     setUser(list) 
+    setUserNumbers(numberList)
     setTurn(!turn)
     setDiceSelector(diceCalculator())
 }
 
-// Stuff for AI
+// Stuff for AI opponent
 if (turn === false) {
     
-    // Sending state to closed scope variable
+    // Storing opponentBoxes
     const list = []
     opponent.forEach(numbers => list.push(numbers))
 
+    // Storing opponentNumbers
     const numberList = []
     opponentNumbers.forEach(number => numberList.push(number))
     
@@ -223,25 +216,17 @@ if (turn === false) {
     const randomNumber = Math.floor(Math.random() * goodNumbers.length)
     // Storing random index
     const index =list.indexOf(goodNumbers[randomNumber])
-    // Storing CurrentNumber
-    const diceNumber = diceSelector.currentNumber
-
-    // Storing Index 
-    // const diceIndex = columnSelector(diceNumber)
 
     list[index] = diceSelector.box
-    // opponentNumbers[index] = diceNumber
-    numberList[index] = diceNumber
-    setOpponentNumbers(numberList)
+    numberList[index] = diceSelector.currentNumber
     setOpponent(list)
-    boxMatcher(diceNumber)
+    setOpponentNumbers(numberList)
     setTurn(!turn)
     setDiceSelector(diceCalculator())
 }
 
-// console.log(opponentNumbers)
 // Checks if box matches
- function boxMatcher (currentNumber) {
+function boxMatcher() {
     //     1,2,3,
     //     4,5,6,
     //     7,8,9
@@ -258,8 +243,6 @@ if (turn === false) {
     })
     const userColumns = [userC1, userC2, userC3]
 
-    // console.log(userColumns)
-    
     // Opponent Columns
     const opponentC1 = opponentNumbers.filter((number, index) => {
         return index === 0 || index === 3 || index === 6
@@ -272,51 +255,84 @@ if (turn === false) {
     })
     const opponentColumns = [opponentC1, opponentC2, opponentC3]
 
-    // console.log(opponentColumns) 
+    let cMatch1 = []
+    let cMatch2 = []
+    let cMatch3 = []
 
-    const matchingNumbers = opponentColumns[0].filter(number => number === Number(number))
-
-    if (matchingNumbers.length === 0) {
-           return 
-    } else {
-        return
+    for (let x = 0; x <= 2; x++) {
+        for (let y = 0; y <= 0; y++) {
+            if (x === 0) {
+                if(opponentColumns[x].includes(opponentColumns[x][y])) {
+                    const numberHolder = opponentColumns[x].filter(number => number === opponentColumns[x][y])
+                    if (numberHolder.length >= 2) {
+                        cMatch1 = numberHolder
+                    }
+                }
+            } else if (x === 1) {
+                if(opponentColumns[x].includes(opponentColumns[x][y])) {
+                    const numberHolder = opponentColumns[x].filter(number => number === opponentColumns[x][y])
+                    if (numberHolder.length >= 2) {
+                        cMatch2 = numberHolder
+                    }
+                }
+            } else if (x === 2) {
+                if(opponentColumns[x].includes(opponentColumns[x][y])) {
+                    const numberHolder = opponentColumns[x].filter(number => number === opponentColumns[x][y])
+                    if (numberHolder.length >= 2) {
+                        cMatch3 = numberHolder
+                    }
+                }
+            }
+        }
     }
 
+    let opponentScore = 0
+    cMatch1.forEach(number => opponentScore += number)
+    cMatch2.forEach(number => opponentScore += number)
+    cMatch3.forEach(number => opponentScore += number)
+    setScore2(opponentScore)
+
+    let uMatch1 = []
+    let uMatch2 = []
+    let uMatch3 = []
+
+    for (let x = 0; x <= 2; x++) {
+        for (let y = 0; y <= 2; y++) {
+            if (x === 0) {
+                if (userColumns[x].includes(userColumns[x][y])) {
+                    const numberHolder = userColumns[x].filter(number => number === userColumns[x][y])
+                    if (numberHolder.length >= 2) {
+                        uMatch1 = numberHolder
+                    } 
+                }
+            } else if (x === 1) {
+                if (userColumns[x].includes(userColumns[x][y])) {
+                    const numberHolder = userColumns[x].filter(number => number === userColumns[x][y])
+                    if (numberHolder.length >= 2) {
+                        uMatch2 = numberHolder
+                    } 
+                }
+            } else if (x === 2) {
+                if (userColumns[x].includes(userColumns[x][y])) {
+                    const numberHolder = userColumns[x].filter(number => number === userColumns[x][y])
+                    if (numberHolder.length >= 2) {
+                        uMatch3 = numberHolder
+                    } 
+                }
+            }
+        }
+    }
+
+    let userScore = 0
+    uMatch1.forEach(number => userScore += number)
+    uMatch2.forEach(number => userScore += number)
+    uMatch3.forEach(number => userScore += number)
+    setScore1(userScore)
  }
-
- console.log(userNumbers)
- console.log(opponentNumbers)
-function columnSelector (number) {
-    //     1,2,3,
-    //     4,5,6,
-    //     7,8,9
-
-    switch (number) {
-        case 1:
-            return 0
-        case 4:
-            return 0
-        case 7:
-            return 0
-        case 2:
-            return 1
-        case 5:
-            return 1
-        case 8:
-            return 1
-        case 3:
-            return 2
-        case 6:
-            return 2
-        case 9:
-            return 2
-        default:
-            return 'nothing happened'
-    }
-}
 
 useEffect(() => {
     finishedGame(user, 'user')
+    boxMatcher()
 })
 
     return (
@@ -348,7 +364,7 @@ useEffect(() => {
                     <div className='playerOne' >
                         <div className='playerOneScore'>
                             <p>Points</p>
-                            {score1.score}
+                            {score1}
                         </div>
                         <div className='playerOneDiceNumber'>
                             {turn === true ? diceSelector.box : box(1,1)}
@@ -385,7 +401,7 @@ useEffect(() => {
                         </div>
                         <div className='playerTwoScore'>
                             <p>Points</p>
-                            {score2.score}
+                            {score2}
                         </div>
                     </div>
                 </section>

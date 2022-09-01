@@ -113,12 +113,8 @@ class Players {
         this.myTurn = myTurn
     }
 
-    addPoints (number) {
-        this.score += number 
-    }
-
-    deductPoints (number) {
-        this.score -= number
+    setScore(number) {
+        this.score = number
     }
 
     resetScore() {

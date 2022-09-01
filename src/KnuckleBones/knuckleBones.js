@@ -17,13 +17,14 @@ export default function KnuckleBones (props) {
     const initialNumbers = [1,2,3,4,5,6,7,8,9]
     const initialString = ['','','','','','','','','']
 
-    const [columnNumber, setColumnNumber] = useState()
     const [user, setUser] = useState(initialNumbers)
-    const [userNumbers, setUserNumbers] = useState(initialNumbers)
+    const userNumbers = [1,2,3,4,5,6,7,8,9]
+    // const [userNumbers, setUserNumbers] = useState(initialNumbers)
     // const [userNumbers, setUserNumbers] = useState(['','','','','','','','',''])
 
     const [opponent, setOpponent] = useState(initialNumbers)
-    const [opponentNumbers, setOpponentNumbers] = useState(initialNumbers)
+    const opponentNumbers = [1,2,3,4,5,6,7,8,9]
+    // const [opponentNumbers, setOpponentNumbers] = useState(initialNumbers)
     // const [opponentNumbers, setOpponentNumbers] = useState(['','','','','','','','',''])
 
     const [diceSelector, setDiceSelector] = useState(diceCalculator())
@@ -42,7 +43,10 @@ function finishedGame (player, name) {
             score1.resetScore()
             score2.resetScore()
             setUser(initialNumbers)
+            // setUserNumbers(initialNumbers)
+
             setOpponent(initialNumbers)
+            // setOpponentNumbers(initialNumbers)
             return true
         } else {
             return false
@@ -52,8 +56,11 @@ function finishedGame (player, name) {
             console.log('Opponent Wins!')
             score1.resetScore()
             score2.resetScore()
-            setUser([1,2,3,4,5,6,7,8,9])
-            setOpponent([1,2,3,4,5,6,7,8,9])
+            setUser(initialNumbers)
+            // setUserNumbers(initialNumbers)
+
+            setOpponent(initialNumbers)
+            // setOpponentNumbers(initialNumbers)
             return true
         } else {
             return false
@@ -183,8 +190,8 @@ function userSelector(index) {
 
     list[index] = diceSelector.box
     userNumbers[index] = diceSelector.currentNumber
-    boxMatcher()
-    setUser(list)
+    // boxMatcher()
+    setUser(list) 
     setTurn(!turn)
     setDiceSelector(diceCalculator())
 }
@@ -199,8 +206,6 @@ if (turn === false) {
     // Variable with only numbers from the list
     const goodNumbers = list.filter(number => number === Number(number))
     // Randomly Selecting a number from the goodNumbers
-    
-    
     const randomNumber = Math.floor(Math.random() * goodNumbers.length)
     // Storing random index
     const index =list.indexOf(goodNumbers[randomNumber])
@@ -210,8 +215,6 @@ if (turn === false) {
     // Storing Index 
     // const diceIndex = columnSelector(diceNumber)
 
-    setColumnNumber(columnSelector(diceNumber))
-    
     list[index] = diceSelector.box
     opponentNumbers[index] = diceNumber
     setOpponent(list)
@@ -220,6 +223,7 @@ if (turn === false) {
     setDiceSelector(diceCalculator())
 }
 
+// console.log(opponentNumbers)
 // Checks if box matches
  function boxMatcher (currentNumber) {
     //     1,2,3,
@@ -237,6 +241,8 @@ if (turn === false) {
         return index === 2 || index === 5 || index === 8
     })
     const userColumns = [userC1, userC2, userC3]
+
+    console.log(userColumns)
     
     // Opponent Columns
     const opponentC1 = opponentNumbers.filter((number, index) => {

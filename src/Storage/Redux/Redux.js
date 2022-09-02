@@ -1,8 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { one, two } from "../../KnuckleBones/knuckleBonesLogic";
 
 // KnuckleBones
-
+// This file is not actively being used
 // kbUser = KnuckleBones User boxes
 const kbUserBoxes = createSlice({
     name: 'kbUserBoxes',

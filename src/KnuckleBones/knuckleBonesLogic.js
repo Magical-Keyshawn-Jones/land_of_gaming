@@ -105,27 +105,6 @@ function six () {
     return six
 }
 
-// Classes for Players 
-class Players {
-    constructor(name, score, myTurn) {
-        this.name = name
-        this.score = score
-        this.myTurn = myTurn
-    }
-
-    setScore(number) {
-        this.score = number
-    }
-
-    resetScore() {
-        this.score = 0
-    }
-
-    turn() {
-        this.myTurn = !this.myTurn
-    }
-}
-
 export {
     one,
     two,
@@ -133,5 +112,4 @@ export {
     four,
     five,
     six,
-    Players,
 }

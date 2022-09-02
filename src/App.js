@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 // KnuckleBones Imports
 import { 
-  one, two, three, four, five, six, Players
+  one, two, three, four, five, six
 } from './KnuckleBones/knuckleBonesLogic';
 
 // Applications Imports
@@ -36,7 +36,6 @@ function App() {
         four={four}
         five={five}
         six={six}
-        Players={Players}
         />} />
       </Routes>
 

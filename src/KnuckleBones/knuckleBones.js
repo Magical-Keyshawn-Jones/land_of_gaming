@@ -14,7 +14,7 @@ import { useState, useEffect } from 'react';
 export default function KnuckleBones (props) {
     const {
         one, two, three, four, five, six
-    } = props
+    } = props 
     
     // initial values for state
     // ***These numbers *have to* be above 9 because of boxMatch(can be optimized)

@@ -2,3 +2,52 @@
 .homePage {
     padding: .3rem 2rem 0 2rem;
 }
+
+.homeHeader {
+    display: flex;
+    flex-direction: column;
+}
+
+.homeHeader section {
+    display: flex;
+    justify-content: space-between;
+}
+
+.homeHeader h1 {
+    font-size: 3rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.aboutMe {
+    font-size: 2rem;
+    width: 100%;
+    margin-left: 1rem;
+}
+
+.aboutMe p {
+    margin-bottom: 1rem;
+}
+
+.bold {
+    font-weight: 1000;
+}
+
+.special {
+    font-weight: 2000;
+    font-style: italic;
+}
+
+.jobTitle {
+    text-align: left !important;
+}
+
+.profilePic {
+    height: auto;
+    width: 60vh;
+}
+
+.profilePic img {
+    height: 100%;
+    width: 100%;
+}

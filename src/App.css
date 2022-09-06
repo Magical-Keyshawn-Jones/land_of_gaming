@@ -47,22 +47,19 @@ main {
 	height: 100rem;
 }
 
-header {
+.navBar {
 	display: flex;
 	position: relative;
 	z-index: 1;
 	flex-direction: column;
-	background: linear-gradient(to top, black, rgb(68, 186, 255));
+	background: linear-gradient(to top, purple, rgb(138, 221, 248));
 	box-shadow: 0 0 1rem 0 ;
 }
 
-header h1 {
+.navBar h1 {
 	text-align: center;
 	font-size: 3rem;
-}
-
-.homeButton	{
-	color: aqua !important ;
+	/* color: white */
 }
 
 nav {
@@ -74,5 +71,5 @@ nav {
 .link {
 	text-decoration: none;
 	font-size: 2rem;
-	color: rgb(240, 164, 255);
+	color: black;
 }

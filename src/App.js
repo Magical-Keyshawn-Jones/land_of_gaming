@@ -1,6 +1,8 @@
 import './App.css';
 import { connect } from 'react-redux';
 
+// Make navBar look professional
+
 // KnuckleBones Imports
 import { 
   one, two, three, four, five, six

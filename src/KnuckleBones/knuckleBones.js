@@ -9,6 +9,11 @@ import { useState, useEffect } from 'react';
     -Points: Points are given based on the dice
         -If a column has 3 5s then each 5 is worth 15(5x3) and the total would be 45
         -If a column has 2 5s, each is worth 10(5x2) for a total of 20
+
+    Current Goal: If number user has same number as opponent. Delete users matching numbers.
+        -UserBox should be nothing
+        -boxMatch(), line 326
+        -bug: boxMatcher() overrides setUser from list
 */
 
 export default function KnuckleBones (props) {
@@ -19,27 +24,32 @@ export default function KnuckleBones (props) {
     // initial values for state
     // ***These numbers *have to* be above 9 because of boxMatch(can be optimized)
     const initialNumbers = [19, 20, 21, 22, 23, 24, 25, 26, 27]
-    const initialRandomNumbers = ['19',11,12,13,14,15,16,17,18]
+    const initialRandomNumbers = [10,11,12,13,14,15,16,17,18]
 
     const [user, setUser] = useState(initialNumbers)
     const [userNumbers, setUserNumbers] = useState(initialNumbers)
+    const [userHelper, setUserHelper] = useState(initialNumbers)
 
     const [opponent, setOpponent] = useState(initialNumbers)
     const [opponentNumbers, setOpponentNumbers] = useState(initialRandomNumbers)
+    // const [opponentHelper, setOpponentHelper] = useState(initialNumbers)
 
     // Decides what dice will be used
     const [diceSelector, setDiceSelector] = useState(diceCalculator())
     const [score1, setScore1] = useState(0)
     const [score2, setScore2] = useState(0)
-    const [turn, setTurn] = useState(true)
+
+    // random is used to stop rerender loop for boxMatcher()
+    const [random, setRandom] = useState()
+    const [turn, setTurn] = useState(1)
 
 // Checks if All columns are full or empty
-function finishedGame () {
+function finishedGame (player) {
 
     const userTruth = user.filter(item => item === Number(item))
     const opponentTruth = opponent.filter(item => item === Number(item))
 
-    if(turn === true) {
+    if(player === 'user') {
         if (!userTruth.length) {
             console.log('User Wins!')
             setScore1(0)
@@ -49,11 +59,11 @@ function finishedGame () {
 
             setOpponent(initialNumbers)
             setOpponentNumbers(initialRandomNumbers)
-            return true
+            setTurn(1)
         } else {
             return false
         }
-    } else {
+    } else if (player === 'opponent') {
         if (!opponentTruth.length) {
             console.log('Opponent Wins!')
             setScore1(0)
@@ -63,7 +73,7 @@ function finishedGame () {
 
             setOpponent(initialNumbers)
             setOpponentNumbers(initialRandomNumbers)
-            return true
+            setTurn(1)
         } else {
             return false
         }
@@ -183,7 +193,7 @@ function box (item, index) {
 
 // User Click Handler
 function userSelector(index) {
-    if (turn === false) {
+    if (turn === 2) {
         return
     }
 
@@ -198,14 +208,16 @@ function userSelector(index) {
     list[index] = diceSelector.box
     numberList[index] = diceSelector.currentNumber
     
-    setUser(list) 
+    // setUser(list)
+    setUserHelper(list) 
     setUserNumbers(numberList)
-    setTurn(!turn)
+    setTurn(2)
     setDiceSelector(diceCalculator())
+    setRandom(Math.random() * 5)
 }
 
 // Stuff for AI opponent
-if (turn === false) {
+if (turn === 2) {
     
     // Storing opponentBoxes
     const list = []
@@ -226,15 +238,18 @@ if (turn === false) {
     numberList[index] = diceSelector.currentNumber
     setOpponent(list)
     setOpponentNumbers(numberList)
-    setTurn(!turn)
+    setTurn(1)
     setDiceSelector(diceCalculator())
+    setRandom(Math.random() * 5)
 }
 
 // Checks if box matches
-function boxMatcher() {
+function boxMatcher(whoseTurn) {
     //     1,2,3,
     //     4,5,6,
     //     7,8,9
+
+    // const boxes = list ? list : opponent
 
     // User Columns
     const userC1 = userNumbers.filter((number, index) => {
@@ -247,6 +262,18 @@ function boxMatcher() {
         return index === 2 || index === 5 || index === 8
     })
     const userColumns = [userC1, userC2, userC3]
+
+    // User boxes
+    const userB1 = userHelper.filter((number, index) => {
+        return index === 0 || index === 3 || index === 6 
+    })
+    const userB2 = userHelper.filter((number, index) => {
+        return index === 1 || index === 4 || index === 7
+    })
+    const userB3 = userHelper.filter((number, index) => {
+        return index === 2 || index === 5 || index === 8
+    })
+    const userBoxes = [userB1, userB2, userB3]
 
     // Opponent Columns
     const opponentC1 = opponentNumbers.filter((number, index) => {
@@ -264,20 +291,6 @@ function boxMatcher() {
     let cMatch1 = []
     let cMatch2 = []
     let cMatch3 = []
-
-    // opponentColumns[0][0] = 1
-    // for (let x = 0; x <= 2; x++) {
-    //     for(let y = 0; y <= 2; y++) {
-    //         if (opponentColumns[x].includes(userColumns[x][y])) {
-    //             while(opponentColumns[x].includes(userColumns[x][y])) {
-    //                 const index = opponentColumns[x].indexOf(userColumns[x][y])
-    //                 opponentColumns[x][index] = Math.floor(Math.random() * 100000)
-    //                 console.log(opponentColumns[0][0])
-    //             }
-    //         }
-    //     }
-    // }
-    // console.log(opponentColumns[0][0])
 
     // OpponentLoop finds 2 or more of the same number
     for (let x = 0; x <= 2; x++) {
@@ -313,28 +326,45 @@ function boxMatcher() {
     cMatch2.forEach(number => opponentScore += number)
     cMatch3.forEach(number => opponentScore += number)
     setScore2(opponentScore)
+    
+    if (turn === 1) {
+        // Storing new user Div boxes
+        const userResults = []
+
+        // Updates Div Box for user
+        for (let x = 0; x <= 2; x++) {
+            for (let y = 0; y <= 2; y++) {
+                if (userColumns[x].includes(opponentColumns[x][y])) {
+                    const index = userColumns[x].indexOf(opponentColumns[x][y])
+                    userColumns[x][index] = Math.floor(Math.random() * 100000)
+                    userBoxes[x][index] = Math.floor(Math.random() * 100000)
+                    x = 0
+                }
+            }
+        }
+        
+        userResults.push(userB1[0])
+        userResults.push(userB2[0])
+        userResults.push(userB3[0])
+
+        userResults.push(userB1[1])
+        userResults.push(userB2[1])
+        userResults.push(userB3[1])
+        
+        userResults.push(userB1[2])
+        userResults.push(userB2[2])
+        userResults.push(userB3[2])
+
+        // console.log(userResults)
+        // console.log(userHelper) 
+        setUser(userResults)
+        // console.log(user)
+    }
 
     //  User columns matches
     let uMatch1 = []
     let uMatch2 = []
     let uMatch3 = []
-
-    console.log(userColumns)
-    console.log(opponentColumns)
-    // Deletes the matching one
-    for (let x = 0; x <= 2; x++) {
-        for (let y = 0; y <= 2; y++) {
-            if (userColumns[x].includes(opponentColumns[x][y])) {
-                // console.log(opponentColumns[x][y])
-                while(userColumns[x].includes(opponentColumns[x][y])) {
-                    const index = userColumns[x].indexOf(opponentColumns[x][y])
-                    userColumns[x][index] = Math.floor(Math.random() * 1000)
-                    // console.log(userColumns[x])
-                }
-            }
-        }
-    }
-    console.log(userColumns)
 
     // UserLoop finds 2 or more of the same number
     for (let x = 0; x <= 2; x++) {
@@ -375,7 +405,12 @@ function boxMatcher() {
 //  On any change checks if the game is done and any matching boxes
 useEffect(() => {
     boxMatcher()
-    finishedGame()
+    //eslint-disable-next-line
+}, [random])
+
+useEffect(() => {
+    finishedGame('user')
+    finishedGame('opponent')
 })
 
     return (
@@ -410,7 +445,7 @@ useEffect(() => {
                             {score1}
                         </div>
                         <div className='playerOneDiceNumber'>
-                            {turn === true ? diceSelector.box : box(1,1)}
+                            {turn === 1 ? diceSelector.box : box(1,1)}
                         </div>
                         <div className='playerOneName'>
                             <h1>Doorknob</h1>
@@ -440,7 +475,7 @@ useEffect(() => {
                             <p>Player Two name</p>
                         </div>
                         <div className='playerTwoDiceNumber'>
-                            {turn === true ? box(1,1) : diceSelector.box}
+                            {turn === 1 ? box(1,1) : diceSelector.box}
                         </div>
                         <div className='playerTwoScore'>
                             <p>Points</p>

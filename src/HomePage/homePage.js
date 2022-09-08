@@ -16,9 +16,9 @@ export default function HomePage () {
     'Debugging', 'Algorithms', 'Agile Project Management','Teamwork & Collaboration', 'Time Management Techniques'  
     ]
 
-    function tcFactory (skill) {
+    function tcFactory (skill, number) {
         return (
-            <p>{skill}</p>
+            <p key={number}>{skill}</p>
         )
     }
 
@@ -53,8 +53,8 @@ export default function HomePage () {
             </header>
             <section className='technicalSkills'>
                 <div className='skills'>
-                    {technicalSkills.map(item => {
-                        return tcFactory(item)
+                    {technicalSkills.map((item, index) => {
+                        return tcFactory(item, index)
                     })}
                 </div>
                 <h1>Technical Skills</h1>

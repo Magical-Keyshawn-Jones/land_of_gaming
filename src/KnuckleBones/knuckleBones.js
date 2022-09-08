@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
         -If a column has 3 5s then each 5 is worth 15(5x3) and the total would be 45
         -If a column has 2 5s, each is worth 10(5x2) for a total of 20
 
-    Current Goal: 
+    Current Goal: Fix point system
 */
 
 export default function KnuckleBones (props) {
@@ -241,7 +241,7 @@ if (turn === 2) {
 }
 
 // Checks if box matches
-function boxMatcher(whoseTurn) {
+function boxMatcher() {
     //     1,2,3,
     //     4,5,6,
     //     7,8,9
@@ -291,27 +291,27 @@ function boxMatcher(whoseTurn) {
 
     // OpponentLoop finds 2 or more of the same number
     for (let x = 0; x <= 2; x++) {
-        for (let y = 0; y <= 0; y++) {
+        for (let y = 0; y <= 2; y++) {
             if (x === 0) {
-                if(opponentColumns[x].includes(opponentColumns[x][y])) {
+                if (opponentColumns[x].includes(opponentColumns[x][y])) {
                     const numberHolder = opponentColumns[x].filter(number => number === opponentColumns[x][y])
                     if (numberHolder.length >= 2) {
                         cMatch1 = numberHolder
-                    }
+                    } 
                 }
             } else if (x === 1) {
-                if(opponentColumns[x].includes(opponentColumns[x][y])) {
-                    const numberHolder = opponentColumns[x].filter(number => number === opponentColumns[x][y])
+                if (opponentColumns[x].includes(opponentColumns[x][y])) {
+                    const numberHolder = opponentColumns[x].filter(number => number ===opponentColumns[x][y])
                     if (numberHolder.length >= 2) {
                         cMatch2 = numberHolder
-                    }
+                    } 
                 }
             } else if (x === 2) {
-                if(opponentColumns[x].includes(opponentColumns[x][y])) {
+                if (opponentColumns[x].includes(opponentColumns[x][y])) {
                     const numberHolder = opponentColumns[x].filter(number => number === opponentColumns[x][y])
                     if (numberHolder.length >= 2) {
                         cMatch3 = numberHolder
-                    }
+                    } 
                 }
             }
         }
@@ -319,8 +319,13 @@ function boxMatcher(whoseTurn) {
 
     // Opponent/ adding and setting opponent score
     let opponentScore = 0
+    cMatch1 = cMatch1.map(number => {return number * cMatch1.length})
     cMatch1.forEach(number => opponentScore += number)
+
+    cMatch2 = cMatch2.map(number => {return number * cMatch2.length})
     cMatch2.forEach(number => opponentScore += number)
+    
+    cMatch3 = cMatch3.map(number => {return number * cMatch3.length})
     cMatch3.forEach(number => opponentScore += number)
     setScore2(opponentScore)
     
@@ -352,10 +357,7 @@ function boxMatcher(whoseTurn) {
         userResults.push(userB2[2])
         userResults.push(userB3[2])
 
-        // console.log(userResults)
-        // console.log(userHelper) 
         setUser(userResults)
-        // console.log(user)
     }
 
     //  User columns matches
@@ -393,8 +395,13 @@ function boxMatcher(whoseTurn) {
 
     // User/ adding and setting user Score
     let userScore = 0
+    uMatch1 = uMatch1.map(number => {return number * uMatch1.length})
     uMatch1.forEach(number => userScore += number)
+
+    uMatch2 = uMatch2.map(number => {return number * uMatch2.length})
     uMatch2.forEach(number => userScore += number)
+    
+    uMatch3 = uMatch3.map(number => {return number * uMatch3.length})
     uMatch3.forEach(number => userScore += number)
     setScore1(userScore)
  }

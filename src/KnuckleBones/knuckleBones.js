@@ -10,10 +10,7 @@ import { useState, useEffect } from 'react';
         -If a column has 3 5s then each 5 is worth 15(5x3) and the total would be 45
         -If a column has 2 5s, each is worth 10(5x2) for a total of 20
 
-    Current Goal: If number user has same number as opponent. Delete users matching numbers.
-        -UserBox should be nothing
-        -boxMatch(), line 326
-        -bug: boxMatcher() overrides setUser from list
+    Current Goal: 
 */
 
 export default function KnuckleBones (props) {

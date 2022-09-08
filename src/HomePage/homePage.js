@@ -4,16 +4,34 @@ import Profile_Pic  from '../Images/HomePage/Profile_Pic.jpg'
 // Make nav bar look professional
 
 export default function HomePage () {
+
+    /* 
+        Key: 
+        tc-technicalSkills
+    */
+    const technicalSkills = ['HTML', 'CSS', 'Less', 'JavaScript', 'React', 'Context API', 'Express.JS', 'Node.JS', 'Responsive Design', 
+    'Jest', 'Cypress', 'SQL', 'Postgres', 'Asynchronous JavaScript', 'Axios', 'RESTful Architecture', 
+    'Authentication','Single Page Applications', 'React Hooks', 'git', 'Github', 'Heroku', 'Computer Architecture', 
+    'Automated Unit Testing', 'End-To-End Testing', 'Integration Testing', 'Deployment', 'Knex', 'Relation DataBases', 
+    'Debugging', 'Algorithms', 'Agile Project Management','Teamwork & Collaboration', 'Time Management Techniques'  
+    ]
+
+    function tcFactory (skill) {
+        return (
+            <p>{skill}</p>
+        )
+    }
+
     return (
         <main className='homePage'>
             <header className='homeHeader'>
-                <h1> Keyshawn Jones </h1>
+                <h1 className='header1'> Keyshawn Jones </h1>
                 <section>
                     <div className='profilePic'>
                         <img src={Profile_Pic} alt='Profile Pic'/>
                     </div>
                     <div className='aboutMe'>
-                        <h1>About Me</h1>
+                        <h1 className='header2'>About Me</h1>
                         <p>
                             <span className='bold'> How I got into coding? </span> It started in high school when I downloaded Mimo,
                             an app that teaches you how to code, from there I had a growing interest and love for anything code.
@@ -33,6 +51,14 @@ export default function HomePage () {
                 </section>
                 <h1 className='jobTitle'> Full Stack Web Developer </h1>
             </header>
+            <section className='technicalSkills'>
+                <div className='skills'>
+                    {technicalSkills.map(item => {
+                        return tcFactory(item)
+                    })}
+                </div>
+                <h1>Technical Skills</h1>
+            </section>
         </main>
     )
 }

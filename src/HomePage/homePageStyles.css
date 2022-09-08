@@ -6,6 +6,7 @@
 .homeHeader {
     display: flex;
     flex-direction: column;
+    border-bottom: solid black 3px;
 }
 
 .homeHeader section {
@@ -17,6 +18,17 @@
     font-size: 3rem;
     text-align: center;
     margin: 1rem 0;
+}
+
+.header1 {
+    border: solid black 4px;
+    width: fit-content;
+    padding: .5rem;
+    align-self: center;
+}
+
+.header2 {
+    border: solid black 4px;
 }
 
 .aboutMe {
@@ -50,4 +62,36 @@
 .profilePic img {
     height: 100%;
     width: 100%;
+}
+
+.technicalSkills {
+    display: flex;
+    margin-top: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: solid black 3px;
+}
+
+.technicalSkills div {
+    display: grid;
+    grid-template-columns: repeat(7, 13rem);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1rem;
+    margin-right: 1rem;
+}
+
+.technicalSkills p {
+    border: solid 2px black;
+    border-radius: .5rem;
+    padding: .4rem;
+    font-size: 2rem;
+    text-align: center;
+}
+
+/* Color Code Skills */
+.technicalSkills p:nth-child(3) {
+    background-color: pink;
+}
+
+.technicalSkills h1 {
+    font-size: 4rem
 }

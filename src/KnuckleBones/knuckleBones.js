@@ -226,7 +226,7 @@ function userSelector(index) {
 
 // Stuff for AI opponent
 if (turn === 2) {
-    
+    console.log(turn)
     // Storing opponentBoxes
     const list = []
     opponent.forEach(numbers => list.push(numbers))
@@ -340,7 +340,7 @@ function boxMatcher() {
 
         setOpponent(opponentResults)
     }
-    
+
     // Opponent column matches
     const opponentObject = {
         oMatch1: {duplicates: [], singleNumbers: []},
@@ -540,6 +540,7 @@ useEffect(() => {
 }, [random])
 
 useEffect(() => {
+    console.log(turn)
     finishedGame('user')
     finishedGame('opponent')
 })

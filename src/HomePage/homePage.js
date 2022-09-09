@@ -1,5 +1,6 @@
 import './homePageStyles.css'
 import Profile_Pic  from '../Images/HomePage/Profile_Pic.jpg'
+import { technicalSkills, projects } from './homeVariables'
 
 // Make nav bar look professional
 
@@ -9,16 +10,25 @@ export default function HomePage () {
         Key: 
         tc-technicalSkills
     */
-    const technicalSkills = ['HTML', 'CSS', 'Less', 'JavaScript', 'React', 'Context API', 'Express.JS', 'Node.JS', 'Responsive Design', 
-    'Jest', 'Cypress', 'SQL', 'Postgres', 'Asynchronous JavaScript', 'Axios', 'RESTful Architecture', 
-    'Authentication','Single Page Applications', 'React Hooks', 'git', 'Github', 'Heroku', 'Computer Architecture', 
-    'Automated Unit Testing', 'End-To-End Testing', 'Integration Testing', 'Deployment', 'Knex', 'Relation DataBases', 
-    'Debugging', 'Algorithms', 'Agile Project Management','Teamwork & Collaboration', 'Time Management Techniques'  
-    ]
 
+    // Renders skills to the website
     function tcFactory (skill, number) {
         return (
             <p key={number}>{skill}</p>
+        )
+    }
+
+    function projectFactory (project, key) {
+        return (
+            <div className='coolProject' key={key} onClick=''>
+                {/* Always add rel with target blank to prevent tabnabbing */}
+                <a href={project.link} target='_blank' rel='noopener noreferrer'>
+                    <div className='projectImage'>
+                        <img src={project.image} alt='project img' />
+                    </div>
+                    <h3>{project.title}</h3>
+                </a>
+            </div>
         )
     }
 
@@ -58,6 +68,15 @@ export default function HomePage () {
                     })}
                 </div>
                 <h1>Technical Skills</h1>
+            </section>
+            <section className='project'>
+                <h1>Projects</h1>
+                <h2>Click on a project to follow Github link</h2>
+                <div className='projectGrid'>
+                    {projects.map((item, index) => {
+                        return projectFactory(item, index)
+                    })}
+                </div>
             </section>
         </main>
     )

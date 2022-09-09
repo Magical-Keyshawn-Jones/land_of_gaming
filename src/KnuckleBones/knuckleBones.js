@@ -10,8 +10,7 @@ import { useState, useEffect } from 'react';
         -If a column has 3 5s then each 5 is worth 15(5x3) and the total would be 45
         -If a column has 2 5s, each is worth 10(5x2) for a total of 20
 
-    Current Goal: fix Scoring
-        -Each dice contributes to the scoreBoard
+    Current Goal: fix opponent changing user dice to a large # when matching
 */
 
 export default function KnuckleBones (props) {
@@ -26,13 +25,11 @@ export default function KnuckleBones (props) {
 
     const [user, setUser] = useState(initialNumbers)
     const [userNumbers, setUserNumbers] = useState(initialNumbers)
-    // const [userDiceScore, setUserDiceScore] = useState()
     const [userHelper, setUserHelper] = useState(initialNumbers)
 
     const [opponent, setOpponent] = useState(initialNumbers)
     const [opponentNumbers, setOpponentNumbers] = useState(initialRandomNumbers)
-    // const [opponentDiceScore, setOpponentDiceScore] = useState()
-    // const [opponentHelper, setOpponentHelper] = useState(initialNumbers)
+    const [opponentHelper, setOpponentHelper] = useState(initialNumbers)
 
     // Decides what dice will be used
     const [diceSelector, setDiceSelector] = useState(diceCalculator())
@@ -341,6 +338,7 @@ function boxMatcher() {
             for (let y = 0; y <= 2; y++) {
                 if (userColumns[x].includes(opponentColumns[x][y])) {
                     const index = userColumns[x].indexOf(opponentColumns[x][y])
+
                     userColumns[x][index] = Math.floor(Math.random() * 100000)
                     userBoxes[x][index] = Math.floor(Math.random() * 100000)
                     x = 0
@@ -348,6 +346,7 @@ function boxMatcher() {
             }
         }
         
+        // Turn into a for loop
         userResults.push(userB1[0])
         userResults.push(userB2[0])
         userResults.push(userB3[0])
@@ -368,51 +367,37 @@ function boxMatcher() {
     let uMatch1 = []
     let uMatch2 = []
     let uMatch3 = []
-    let normalNumbers = 0
+    // let normalNumbers = 0
     let otherNumbers = 0
     let userScore = 0
+    
     // UserLoop finds 2 or more of the same number
     for (let x = 0; x <= 2; x++) {
         for (let y = 0; y <= 2; y++) {
-
-            // // Storing current numbers
-            // let number1 = 0
-            // let number2 = 0
-            // let number3 = 0
-
-            // if (y === 0) {
-            //     number1 = userColumns[x][y]
-            //     number2 = userColumns[x][y + 1]
-            //     number3 = userColumns[x][y + 2]
-            // }
+            
+            const numberHolder = userColumns[x].filter(number => number === userColumns[x][y])
+            const trueNumbers = userColumns[x].filter(number => number >= 1 && number <=6)
+            const bestNumbers = userColumns[x].filter(number => number >= 1 && number <= 6 && number !== numberHolder[0])
 
             if (x === 0) {
                 if (userColumns[x].includes(userColumns[x][y])) {
-                    const numberHolder = userColumns[x].filter(number => number === userColumns[x][y])
-                    const numberHolder2 = userColumns[x].filter(number => number !== userColumns[x][y])
-                    // console.log(numberHolder2)
-                    const bestNumbers = userColumns[x].filter(number => {
-                        return number >= 1 && number <= 6
-                    })
 
-                    // If there are 2 or more numbers put it into the variable
-                    if (numberHolder.length >= 2) {
+                    if (numberHolder.length <= 1) {
+                        otherNumbers = trueNumbers
+                    } 
+                    else if (numberHolder.length === 2) {
                         uMatch1 = numberHolder
-
-                        if (numberHolder2[0] >= 1 && numberHolder2[0] <= 6) {
-                            normalNumbers = numberHolder2[0]
-                        }
-                    } else {
                         otherNumbers = bestNumbers
-                        console.log(bestNumbers)
-                    }
 
-                } else {
-                    console.log('')
+                    } else if (numberHolder.length === 3) {
+                        uMatch1 = numberHolder
+                        otherNumbers = [0]
+                    }
                 }
             } else if (x === 1) {
                 if (userColumns[x].includes(userColumns[x][y])) {
                     const numberHolder = userColumns[x].filter(number => number === userColumns[x][y])
+
                     if (numberHolder.length >= 2) {
                         uMatch2 = numberHolder
                     } 
@@ -430,7 +415,6 @@ function boxMatcher() {
     }
 
     // User/ adding and setting user Score
-    // let userScore = 0
     uMatch1 = uMatch1.map(number => {return number * uMatch1.length})
     uMatch1.forEach(number => userScore += number)
 
@@ -439,12 +423,10 @@ function boxMatcher() {
     
     uMatch3 = uMatch3.map(number => {return number * uMatch3.length})
     uMatch3.forEach(number => userScore += number)
-    userScore += normalNumbers
     otherNumbers.forEach(number => userScore += number)
-    // normalNumbers.forEach(number => userScore += number)
-    // console.log(normalNumbers)
+
     setScore1(userScore)
- }
+}
 
 //  On any change checks if the game is done and any matching boxes
 useEffect(() => {

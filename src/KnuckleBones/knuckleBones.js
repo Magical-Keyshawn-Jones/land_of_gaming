@@ -10,7 +10,7 @@ import { useState, useEffect } from 'react';
         -If a column has 3 5s then each 5 is worth 15(5x3) and the total would be 45
         -If a column has 2 5s, each is worth 10(5x2) for a total of 20
 
-    Current Goal: fix opponent changing user dice to a large # when matching
+    Current Goal: 
 */
 
 export default function KnuckleBones (props) {
@@ -48,7 +48,13 @@ function finishedGame (player) {
 
     if(player === 'user') {
         if (!userTruth.length) {
-            console.log('User Wins!')
+            if(score1 > score2) {
+                console.log('user won!')
+            } else if (score1 < score2) {
+                console.log('opponent won!')
+            } else if (score1 === score2) {
+                console.log('A Magical Draw has Occurred!')
+            }
             setScore1(0)
             setScore2(0)
             setUser(initialNumbers)
@@ -62,7 +68,13 @@ function finishedGame (player) {
         }
     } else if (player === 'opponent') {
         if (!opponentTruth.length) {
-            console.log('Opponent Wins!')
+            if (score2 > score1) {
+                console.log('opponent won!')
+            } else if (score2 < score1) {
+                console.log('user won!')
+            } else if (score1 === score2) {
+                console.log('A Magical Draw has Occurred!')
+            }
             setScore1(0)
             setScore2(0)
             setUser(initialNumbers)
@@ -285,9 +297,9 @@ function boxMatcher() {
     const opponentColumns = [opponentC1, opponentC2, opponentC3]
 
     // Opponent column matches
-    let cMatch1 = []
-    let cMatch2 = []
-    let cMatch3 = []
+    let oMatch1 = []
+    let oMatch2 = []
+    let oMatch3 = []
 
     // OpponentLoop finds 2 or more of the same number
     for (let x = 0; x <= 2; x++) {
@@ -296,21 +308,21 @@ function boxMatcher() {
                 if (opponentColumns[x].includes(opponentColumns[x][y])) {
                     const numberHolder = opponentColumns[x].filter(number => number === opponentColumns[x][y])
                     if (numberHolder.length >= 2) {
-                        cMatch1 = numberHolder
+                        oMatch1 = numberHolder
                     } 
                 }
             } else if (x === 1) {
                 if (opponentColumns[x].includes(opponentColumns[x][y])) {
                     const numberHolder = opponentColumns[x].filter(number => number ===opponentColumns[x][y])
                     if (numberHolder.length >= 2) {
-                        cMatch2 = numberHolder
+                        oMatch2 = numberHolder
                     } 
                 }
             } else if (x === 2) {
                 if (opponentColumns[x].includes(opponentColumns[x][y])) {
                     const numberHolder = opponentColumns[x].filter(number => number === opponentColumns[x][y])
                     if (numberHolder.length >= 2) {
-                        cMatch3 = numberHolder
+                        oMatch3 = numberHolder
                     } 
                 }
             }
@@ -319,14 +331,14 @@ function boxMatcher() {
 
     // Opponent/ adding and setting opponent score
     let opponentScore = 0
-    cMatch1 = cMatch1.map(number => {return number * cMatch1.length})
-    cMatch1.forEach(number => opponentScore += number)
+    oMatch1 = oMatch1.map(number => {return number * oMatch1.length})
+    oMatch1.forEach(number => opponentScore += number)
 
-    cMatch2 = cMatch2.map(number => {return number * cMatch2.length})
-    cMatch2.forEach(number => opponentScore += number)
+    oMatch2 = oMatch2.map(number => {return number * oMatch2.length})
+    oMatch2.forEach(number => opponentScore += number)
     
-    cMatch3 = cMatch3.map(number => {return number * cMatch3.length})
-    cMatch3.forEach(number => opponentScore += number)
+    oMatch3 = oMatch3.map(number => {return number * oMatch3.length})
+    oMatch3.forEach(number => opponentScore += number)
     setScore2(opponentScore)
     
     if (turn === 1) {
@@ -346,7 +358,8 @@ function boxMatcher() {
             }
         }
         
-        // Turn into a for loop
+        // Optimization: turn into a for loop
+        // Pushing the correct order of boxes to userResults, then user
         userResults.push(userB1[0])
         userResults.push(userB2[0])
         userResults.push(userB3[0])
@@ -362,68 +375,88 @@ function boxMatcher() {
         setUser(userResults)
     }
 
-    // Put this inside an object for simplicity
+    // Optimization: Put inside of an object
     //  User columns matches
-    let uMatch1 = []
-    let uMatch2 = []
-    let uMatch3 = []
-    // let normalNumbers = 0
-    let otherNumbers = 0
     let userScore = 0
+
+    const userObject = {
+        uMatch1: {duplicates: [], singleNumbers: []},
+        uMatch2: {duplicates: [], singleNumbers: []},
+        uMatch3: {duplicates: [], singleNumbers: []},
+    }
     
     // UserLoop finds 2 or more of the same number
     for (let x = 0; x <= 2; x++) {
         for (let y = 0; y <= 2; y++) {
             
             const numberHolder = userColumns[x].filter(number => number === userColumns[x][y])
-            const trueNumbers = userColumns[x].filter(number => number >= 1 && number <=6)
-            const bestNumbers = userColumns[x].filter(number => number >= 1 && number <= 6 && number !== numberHolder[0])
+            const singleNumbers = userColumns[x].filter(number => number >= 1 && number <=6)
+            const lastNumber = userColumns[x].filter(number => number >= 1 && number <= 6 && number !== numberHolder[0])
 
             if (x === 0) {
                 if (userColumns[x].includes(userColumns[x][y])) {
 
                     if (numberHolder.length <= 1) {
-                        otherNumbers = trueNumbers
+                        userObject.uMatch1.singleNumbers = singleNumbers
                     } 
                     else if (numberHolder.length === 2) {
-                        uMatch1 = numberHolder
-                        otherNumbers = bestNumbers
+                        userObject.uMatch1.duplicates = numberHolder
+                        userObject.uMatch1.singleNumbers = lastNumber
 
                     } else if (numberHolder.length === 3) {
-                        uMatch1 = numberHolder
-                        otherNumbers = [0]
+                        userObject.uMatch1.duplicates = numberHolder
+                        userObject.uMatch1.singleNumbers  = [0]
                     }
                 }
             } else if (x === 1) {
                 if (userColumns[x].includes(userColumns[x][y])) {
-                    const numberHolder = userColumns[x].filter(number => number === userColumns[x][y])
 
-                    if (numberHolder.length >= 2) {
-                        uMatch2 = numberHolder
+                    if (numberHolder.length <= 1) {
+                        userObject.uMatch2.singleNumbers = singleNumbers
                     } 
+                    else if (numberHolder.length === 2) {
+                        userObject.uMatch2.duplicates = numberHolder
+                        userObject.uMatch2.singleNumbers = lastNumber
+
+                    } else if (numberHolder.length === 3) {
+                        userObject.uMatch2.duplicates = numberHolder
+                        userObject.uMatch2.singleNumbers  = [0]
+                    }
                 }
             } else if (x === 2) {
                 if (userColumns[x].includes(userColumns[x][y])) {
-                    const numberHolder = userColumns[x].filter(number => number === userColumns[x][y])
-                   
-                    if (numberHolder.length >= 2) {
-                        uMatch3 = numberHolder
+
+                    if (numberHolder.length <= 1) {
+                        userObject.uMatch3.singleNumbers = singleNumbers
                     } 
+                    else if (numberHolder.length === 2) {
+                        userObject.uMatch3.duplicates = numberHolder
+                        userObject.uMatch3.singleNumbers = lastNumber
+
+                    } else if (numberHolder.length === 3) {
+                        userObject.uMatch3.duplicates = numberHolder
+                        userObject.uMatch3.singleNumbers  = [0]
+                    }
                 }
             }
         }
     }
 
     // User/ adding and setting user Score
-    uMatch1 = uMatch1.map(number => {return number * uMatch1.length})
-    uMatch1.forEach(number => userScore += number)
+    // uMatch1
+    userObject.uMatch1.duplicates = userObject.uMatch1.duplicates.map(number => {return number * userObject.uMatch1.duplicates.length})
+    userObject.uMatch1.duplicates.forEach(number => userScore += number)
+    userObject.uMatch1.singleNumbers.forEach(number => userScore += number)
 
-    uMatch2 = uMatch2.map(number => {return number * uMatch2.length})
-    uMatch2.forEach(number => userScore += number)
-    
-    uMatch3 = uMatch3.map(number => {return number * uMatch3.length})
-    uMatch3.forEach(number => userScore += number)
-    otherNumbers.forEach(number => userScore += number)
+    // uMatch2
+    userObject.uMatch2.duplicates = userObject.uMatch2.duplicates.map(number => {return number * userObject.uMatch2.duplicates.length})
+    userObject.uMatch2.duplicates.forEach(number => userScore += number)
+    userObject.uMatch2.singleNumbers.forEach(number => userScore += number)
+
+    // uMatch3
+    userObject.uMatch3.duplicates = userObject.uMatch3.duplicates.map(number => {return number * userObject.uMatch3.duplicates.length})
+    userObject.uMatch3.duplicates.forEach(number => userScore += number)
+    userObject.uMatch3.singleNumbers.forEach(number => userScore += number)
 
     setScore1(userScore)
 }

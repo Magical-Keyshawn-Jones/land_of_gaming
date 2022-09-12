@@ -68,8 +68,41 @@ const jobs = [
     }
 ]
 
+const education = [
+    {
+        title: 'Sikeston Senior High School',
+        year: '2019',
+        link: false,
+        details: [
+            <p>
+                <span>Degree:</span> High School Diploma
+            </p>,
+            <p>
+                Graduate: Yes
+            </p>
+        ]
+    },
+    {
+        title: 'BloomTech(Lambda School)',
+        year: '2022 - 2022',
+        link: 'https://www.bloomtech.com/courses/full-stack-web-development',
+        details: [
+            <p>
+                <span>Degree:</span> Full Stack Development
+            </p>,
+            <p>
+                <span>Program:</span> Full Time
+            </p>,
+            <p>
+                <span>Graduate:</span> Yes
+            </p>
+        ]
+    }
+]
+
 export {
     technicalSkills, 
     projects,
-    jobs
+    jobs,
+    education
 }

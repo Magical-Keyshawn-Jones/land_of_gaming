@@ -1,6 +1,6 @@
 import './homePageStyles.css'
 import Profile_Pic  from '../Images/HomePage/Profile_Pic.jpg'
-import { technicalSkills, projects, jobs } from './homeVariables'
+import { technicalSkills, projects, jobs, education } from './homeVariables'
 
 // Make nav bar look professional
 
@@ -53,6 +53,37 @@ export default function HomePage () {
         )
     }
 
+    function educationFactory (school, key) {
+
+        if (school.link === false) {
+            return (
+                <div className='school' key={key}>
+                    <div>
+                        <h2>{school.title}</h2>
+                        {school.details.map(item => {
+                            return item
+                        })}
+                    </div>
+                    <p>{school.year}</p>
+                </div>
+            )
+        } else {
+            return (
+                <a href={school.link} className='schoolLink' key={key}>
+                    <div className='schoolLinkDiv'>
+                        <div>
+                            <h2>{school.title}</h2>
+                            {school.details.map(item => {
+                                return item
+                            })}
+                        </div>
+                        <p>{school.year}</p>
+                    </div>
+                </a>
+            )
+        }
+    }
+
     return (
         <main className='homePage'>
             <header className='homeHeader'>
@@ -103,6 +134,12 @@ export default function HomePage () {
                 <h1>Experience</h1>
                 {jobs.map((item, index) => {
                     return jobFactory(item, index)
+                })}
+            </section>
+            <section className='education'>
+                <h3>Education</h3>
+                {education.map((item, index) => {
+                    return educationFactory(item, index)
                 })}
             </section>
         </main>

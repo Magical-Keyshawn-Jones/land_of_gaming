@@ -173,7 +173,7 @@
     display: flex;
     flex-direction: column;
     margin-top: 1rem;
-    padding-bottom: 6rem;
+    padding-bottom: 1rem;
     border-bottom: solid black 3px;
     font-size: 1.8rem;
 }
@@ -203,4 +203,45 @@
 .job div p {
     border-bottom: solid black 3px;
     margin-bottom: 1rem;
+}
+
+.education {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 2rem;
+    font-size: 1.8rem;
+    border-bottom: solid black 3px;
+}
+
+.education h2 {
+    font-size: 2.5rem;
+    margin-bottom: .5rem;
+}
+
+.education h3 {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.schoolLink, .school, .schoolLinkDiv {
+    display: flex;
+    align-self: center;
+}
+
+.schoolLink, .school {
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem;
+    border: solid black 3px;
+    border-radius: 3rem;
+}
+
+.schoolLinkDiv div, .school div {
+    margin-right: 1rem;
+}
+
+.schoolLink {
+    text-decoration: none;
+    color: black;
 }

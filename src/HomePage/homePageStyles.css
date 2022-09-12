@@ -133,11 +133,38 @@
 }
 
 .projectImage {
+    position: relative; 
+    overflow: hidden;
     width: 100%;
     height: 100%;
+    margin-bottom: 2rem;
+}
+
+.projectImage:hover div {
+    display: flex;
+    position: absolute;
+    inset: 0;
+    background-color: whitesmoke;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    transition: 200ms ease-in-out;
+}
+
+.projectImage div h2 {
+    border-bottom: black solid 3px
+}
+
+.projectImage span {
+    font-size: 2rem;
 }
 
 .projectImage img{
+    display: block;
+    aspect-ratio: 1/1;
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    object-position: cover;
 }

@@ -25,6 +25,11 @@ export default function HomePage () {
                 <a href={project.link} target='_blank' rel='noopener noreferrer'>
                     <div className='projectImage'>
                         <img src={project.image} alt='project img' />
+                        <div>
+                            <h2>Technical Super Powers Used</h2>
+                            {project.skills.map(item => {
+                            return <span>{item}</span>
+                        })}</div>
                     </div>
                     <h3>{project.title}</h3>
                 </a>

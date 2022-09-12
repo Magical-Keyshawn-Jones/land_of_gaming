@@ -39,7 +39,7 @@ const projects = [
 {
     title: 'React Router Movies',
     image: CodingLife,
-    skills: ['React', 'Node'],
+    skills: ['Node', 'React', 'API'],
     role: 'Full Stack Developer',
     link: 'https://github.com/Magical-Keyshawn-Jones/React-Router-Movies.git',
     description: [
@@ -48,7 +48,28 @@ const projects = [
     ]
 }]
 
+const jobs = [
+    {
+        title: 'Unilever, Sikeston, MO - Supplemental Handpacker',
+        year: 'Aug 2021 - Dec 2021',
+        description: [
+            'Ensured top quality of ice cream by analyzing each product  and communicated findings to management',
+            'Prepared and organized ice cream into boxes and set on a pallets to allow workers to have merchandise on time and   to ship out to vendors'
+        ]
+    },
+    {
+        title: 'Buffalo, Sikeston, MO - Cashier',
+        year: 'Mar 2020 - Jun 2021',
+        description: [
+            'Communicated  with customers over the phone and in person to create orders',
+            'Organized and prepared food bag orders to ensure customers received  everything  ordered',
+            'Provided excellent customer by checking in on guests, ensuring proper seating and communicating with servers making sure guests had a great dining experience'
+        ]
+    }
+]
+
 export {
     technicalSkills, 
-    projects
+    projects,
+    jobs
 }

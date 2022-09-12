@@ -1,6 +1,6 @@
 import './homePageStyles.css'
 import Profile_Pic  from '../Images/HomePage/Profile_Pic.jpg'
-import { technicalSkills, projects } from './homeVariables'
+import { technicalSkills, projects, jobs } from './homeVariables'
 
 // Make nav bar look professional
 
@@ -33,6 +33,22 @@ export default function HomePage () {
                     </div>
                     <h3>{project.title}</h3>
                 </a>
+            </div>
+        )
+    }
+
+    function jobFactory (job, key) {
+        return (
+            <div className='job' key={key}>
+                <div>
+                    <p>{job.title}</p>
+                    <ul>
+                        {job.description.map(item => {
+                            return <li>{item}</li>
+                        })}
+                    </ul>
+                </div>
+                <p>{job.year}</p>
             </div>
         )
     }
@@ -82,6 +98,12 @@ export default function HomePage () {
                         return projectFactory(item, index)
                     })}
                 </div>
+            </section>
+            <section className='experience'>
+                <h1>Experience</h1>
+                {jobs.map((item, index) => {
+                    return jobFactory(item, index)
+                })}
             </section>
         </main>
     )

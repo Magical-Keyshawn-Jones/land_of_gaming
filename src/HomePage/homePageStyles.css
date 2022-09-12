@@ -100,7 +100,7 @@
     display: flex;
     margin-top: 3rem;
     flex-direction: column;
-    padding-bottom: 6rem;
+    padding-bottom: 8rem;
     border-bottom: solid black 3px;
 }
 
@@ -167,4 +167,40 @@
     height: 100%;
     object-fit: cover;
     object-position: cover;
+}
+
+.experience {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    padding-bottom: 6rem;
+    border-bottom: solid black 3px;
+    font-size: 1.8rem;
+}
+
+.experience h1 {
+    font-size: 4rem;
+    padding-bottom: 2rem;
+}
+
+.experience ul {
+    list-style-image: url('../Images/HomePage/miniLion.png');
+    list-style-position:inside;
+}
+
+.job {
+    display: flex;
+    margin-bottom: 2rem;
+    padding: .5rem;
+    border: solid black 3px;
+}
+
+.job p {
+    display: block;
+    width: fit-content;
+}
+
+.job div p {
+    border-bottom: solid black 3px;
+    margin-bottom: 1rem;
 }

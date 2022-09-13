@@ -1,8 +1,11 @@
 import './homePageStyles.css'
 import Profile_Pic  from '../Images/HomePage/Profile_Pic.jpg'
+import GithubLogo from '../Images/HomePage/GithubLogo.png'
+import LinkedInLogo from '../Images/HomePage/LinkedInLogo.png'
 import { technicalSkills, projects, jobs, education } from './homeVariables'
 
 // Make nav bar look professional
+// Make *everything* look smaller. Not shoved in my face
 
 export default function HomePage () {
 
@@ -138,9 +141,30 @@ export default function HomePage () {
             </section>
             <section className='education'>
                 <h3>Education</h3>
-                {education.map((item, index) => {
-                    return educationFactory(item, index)
-                })}
+                <div className='schoolHelper'>
+                    {education.map((item, index) => {
+                        return educationFactory(item, index)
+                    })}
+                </div>
+            </section>
+            <section className='contact'>
+                <h1>Contact Me!</h1>
+                <div className='contactInfo'>
+                    <p>Email: KeyshawnJones@gmail.com</p>
+                    <p>Phone#: (573)-722-2850</p>
+                    <div className='linkContainer'>
+                        <div className='githubLink'>
+                            <a href='https://github.com/Magical-Keyshawn-Jones' target='_blank' rel='noopener noreferrer' >
+                                <img src={GithubLogo} alt='githubLogo'/>
+                            </a>
+                        </div>
+                        <div className='linkedInLink'>
+                            <a href='https://www.linkedin.com/in/keyshawn-jones-a399a122a' target='_blank' rel='noopener noreferrer' >
+                                <img src={LinkedInLogo} alt='linkedInLogo'/>
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
     )

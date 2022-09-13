@@ -20,7 +20,7 @@ import { Link, Routes, Route } from 'react-router-dom'
 function App() {
 
   return (
-    <main>
+    <main className='appBody'>
       <header className='navBar'>
         <h1>Games</h1>
         <nav>

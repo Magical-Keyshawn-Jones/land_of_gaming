@@ -8,11 +8,17 @@ const technicalSkills = [
     'SQL', 'Postgres', 'Asynchronous JavaScript', 'Axios', 'RESTful Architecture', 
     'Authentication','Single Page Applications', 'React Hooks', 'git', 'Github', 'Heroku', 
     'Computer Architecture', 'Automated Unit Testing', 'End-To-End Testing', 'Integration Testing', 
-    'Deployment', 'Knex', 'Relation DataBases', 'Debugging', 'Algorithms', 'Agile Project Management',
+    'Deployment', 'Knex', 'Relational DataBases', 'Debugging', 'Algorithms', 'Agile Project Management',
     'Teamwork & Collaboration', 'Time Management Techniques'  
 ]
 
 const projects = [
+{
+    title: 'LittleFuzzy',
+    image: CodingLife,
+    skills: ["JavaScript", "React.js", "Redux", "Yup", "Jest", "Cypress", "Axios", "Responsive Design"],
+    link: ['https://littlefuzzy.vercel.app/']
+},
 {
     title: 'Authenticating and Testing',
     image: CodingLife,

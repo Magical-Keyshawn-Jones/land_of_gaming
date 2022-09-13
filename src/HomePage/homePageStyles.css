@@ -1,6 +1,8 @@
 
 .homePage {
     padding: .3rem 2rem 0 2rem;
+    height: 100%;
+    background-image: linear-gradient(to bottom, pink 12%, rgb(58, 137, 255), purple, green 66% , rgb(0, 255, 170) 85%, rgb(255, 132, 218))
 }
 
 .homeHeader {
@@ -21,18 +23,20 @@
 }
 
 .header1 {
-    border: solid black 4px;
+    border-bottom: solid black 4px;
     width: fit-content;
-    padding: .5rem;
+    padding: .2rem;
     align-self: center;
+    border-radius: 1rem;
 }
 
 .header2 {
     border: solid black 4px;
+    background-color: aliceblue;
 }
 
 .aboutMe {
-    font-size: 2rem;
+    font-size: 1.5rem;
     width: 100%;
     margin-left: 1rem;
 }
@@ -85,11 +89,19 @@
     padding: .4rem;
     font-size: 2rem;
     text-align: center;
+    background-color: aliceblue;
 }
 
 /* Color Code Skills */
-.technicalSkills p:nth-child(3) {
-    background-color: pink;
+.technicalSkills p:nth-child(1),
+.technicalSkills p:nth-child(2),
+.technicalSkills p:nth-child(4),
+.technicalSkills p:nth-child(5),
+.technicalSkills p:nth-child(16),
+.technicalSkills p:nth-child(29),
+.technicalSkills p:nth-child(25),
+.technicalSkills p:nth-child(24) {
+    background-color: rgb(50, 187, 50);
 }
 
 .technicalSkills h1 {
@@ -118,16 +130,26 @@
     margin-top: 1rem;
     font-size: 2rem;
     text-align: center;
+    color: white;
 }
+
 
 .project h3 {
     font-size: 2rem;
     text-align: center;
 }
+
+.project h4 {
+    /* margin-top: 1rem; */
+    font-size: 2rem;
+    text-align: center;
+    border-bottom: black solid 3px
+}
 .projectGrid {
     display: grid;
-    grid-template-columns: repeat(3, 15rem);
-    gap: 2rem;
+    grid-template-columns: repeat(4, 15rem);
+    grid-template-rows: repeat(1, 20rem);
+    /* gap: 10rem; */
     margin-top: 2rem;
     justify-content: space-evenly;
 }
@@ -150,10 +172,6 @@
     flex-direction: column;
     color: black;
     transition: 200ms ease-in-out;
-}
-
-.projectImage div h2 {
-    border-bottom: black solid 3px
 }
 
 .projectImage span {
@@ -184,7 +202,7 @@
 }
 
 .experience ul {
-    list-style-image: url('../Images/HomePage/miniLion.png');
+    list-style: georgian;
     list-style-position:inside;
 }
 
@@ -192,7 +210,9 @@
     display: flex;
     margin-bottom: 2rem;
     padding: .5rem;
+    background-color: powderblue;
     border: solid black 3px;
+    border-radius: 1rem;
 }
 
 .job p {
@@ -241,6 +261,7 @@
     padding: 1rem;
     border: solid black 3px;
     border-radius: 3rem;
+    background-color: powderblue;
 }
 
 .schoolLinkDiv div, .school div {
@@ -281,6 +302,7 @@
     border: solid black 3px;
     border-radius: 3rem;
     width: fit-content; 
+    background-color: powderblue;
 }
 
 .contact a {

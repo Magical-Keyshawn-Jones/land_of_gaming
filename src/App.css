@@ -43,10 +43,6 @@ table {
 }
 /* //////////////////// */
 
-main {
-	height: 100rem;
-}
-
 .navBar {
 	display: flex;
 	position: relative;

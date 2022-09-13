@@ -26,11 +26,12 @@ export default function KnuckleBones (props) {
     const [user, setUser] = useState(initialNumbers)
     const [userNumbers, setUserNumbers] = useState(initialNumbers)
     const [userHelper, setUserHelper] = useState(initialNumbers)
+    const [userWins, setUserWins] = useState(0)
 
     const [opponent, setOpponent] = useState(initialNumbers)
     const [opponentNumbers, setOpponentNumbers] = useState(initialRandomNumbers)
     const [opponentHelper, setOpponentHelper] = useState(initialNumbers)
-
+    const [opponentWins, setOpponentWins] = useState(0  )
     // Decides what dice will be used
     const [diceSelector, setDiceSelector] = useState(diceCalculator())
     const [score1, setScore1] = useState(0)
@@ -50,8 +51,10 @@ function finishedGame (player) {
         if (!userTruth.length) {
             if(score1 > score2) {
                 console.log('user won!')
+                setUserWins(userWins + 1)
             } else if (score1 < score2) {
                 console.log('opponent won!')
+                setOpponentWins(opponentWins + 1)
             } else if (score1 === score2) {
                 console.log('A Magical Draw has Occurred!')
             }
@@ -70,8 +73,10 @@ function finishedGame (player) {
         if (!opponentTruth.length) {
             if (score2 > score1) { 
                 console.log('opponent won!')
+                setOpponentWins(opponentWins + 1)
             } else if (score2 < score1) {
                 console.log('user won!')
+                setUserWins(userWins + 1)
             } else if (score1 === score2) {
                 console.log('A Magical Draw has Occurred!')
             }
@@ -226,7 +231,6 @@ function userSelector(index) {
 
 // Stuff for AI opponent
 if (turn === 2) {
-    console.log(turn)
     // Storing opponentBoxes
     const list = []
     opponent.forEach(numbers => list.push(numbers))
@@ -540,7 +544,6 @@ useEffect(() => {
 }, [random])
 
 useEffect(() => {
-    console.log(turn)
     finishedGame('user')
     finishedGame('opponent')
 })
@@ -580,7 +583,7 @@ useEffect(() => {
                             {turn === 1 ? diceSelector.box : box(1,1)}
                         </div>
                         <div className='playerOneName'>
-                            <h1>Doorknob</h1>
+                            <h1>Doorknob Wins:{userWins}</h1>
                         </div>
                     </div> 
 
@@ -604,7 +607,7 @@ useEffect(() => {
 
                     <div className='playerTwo' >
                         <div className='playerTwoName'>
-                            <p>Player Two name</p>
+                            <p>Player Two name Wins: {opponentWins}</p>
                         </div>
                         <div className='playerTwoDiceNumber'>
                             {turn === 1 ? box(1,1) : diceSelector.box}

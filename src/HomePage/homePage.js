@@ -23,13 +23,13 @@ export default function HomePage () {
 
     function projectFactory (project, key) {
         return (
-            <div className='coolProject' key={key} onClick=''>
+            <div className='coolProject' key={key}>
                 {/* Always add rel with target blank to prevent tabnabbing */}
                 <a href={project.link} target='_blank' rel='noopener noreferrer'>
                     <div className='projectImage'>
                         <img src={project.image} alt='project img' />
                         <div>
-                            <h2>Technical Super Powers Used</h2>
+                            {/* <h4>Technical Super Powers Used</h4> */}
                             {project.skills.map(item => {
                             return <span>{item}</span>
                         })}</div>
@@ -72,7 +72,7 @@ export default function HomePage () {
             )
         } else {
             return (
-                <a href={school.link} className='schoolLink' key={key}>
+                <a href={school.link} target='_blank' rel='noopener noreferrer' className='schoolLink' key={key}>
                     <div className='schoolLinkDiv'>
                         <div>
                             <h2>{school.title}</h2>

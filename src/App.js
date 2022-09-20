@@ -24,7 +24,7 @@ function App() {
       <header className='navBar'>
         <h1>Games</h1>
         <nav>
-          <Link to='/' className='link homeButton' > Home </Link>
+          <Link to='/' className='link homeButton' > Portfolio </Link>
           <Link to='/KnuckleBones' className='link' > KnuckleBones </Link>
         </nav>
       </header>

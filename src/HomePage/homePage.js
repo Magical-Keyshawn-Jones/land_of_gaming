@@ -126,7 +126,6 @@ export default function HomePage () {
             </section>
             <section className='project'>
                 <h1>Projects</h1>
-                <h2>Click on a project to follow Github link</h2>
                 <div className='projectGrid'>
                     {projects.map((item, index) => {
                         return projectFactory(item, index)

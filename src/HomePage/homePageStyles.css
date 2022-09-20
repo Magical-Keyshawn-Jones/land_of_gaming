@@ -2,7 +2,16 @@
 .homePage {
     padding: .3rem 2rem 0 2rem;
     height: 100%;
-    background-image: linear-gradient(to bottom, pink 12%, rgb(58, 137, 255), purple, green 66% , rgb(0, 255, 170) 85%, rgb(255, 132, 218))
+    /* color: #c5c6c7; */
+
+    color: white;
+    /* Dark Background */
+    background-color: #0b0c10;
+    
+    /* Light Background */
+    /* background-color: #1f2833; */
+
+
 }
 
 .homeHeader {
@@ -20,6 +29,11 @@
     font-size: 3rem;
     text-align: center;
     margin: 1rem 0;
+    color: #66fcf1;
+}
+
+.header1, .header2 {
+    color: #66fcf1;
 }
 
 .header1 {
@@ -32,7 +46,7 @@
 
 .header2 {
     border: solid black 4px;
-    background-color: aliceblue;
+    background-color: #1f2833;
 }
 
 .aboutMe {
@@ -75,6 +89,10 @@
     border-bottom: solid black 3px;
 }
 
+.technicalSkills h1 {
+    color: #66fcf1;
+}
+
 .technicalSkills div {
     display: grid;
     grid-template-columns: repeat(7, 13rem);
@@ -89,7 +107,7 @@
     padding: .4rem;
     font-size: 2rem;
     text-align: center;
-    background-color: aliceblue;
+    background-color: #1f2833;
 }
 
 /* Color Code Skills */
@@ -101,7 +119,7 @@
 .technicalSkills p:nth-child(29),
 .technicalSkills p:nth-child(25),
 .technicalSkills p:nth-child(24) {
-    background-color: rgb(50, 187, 50);
+    background-color: #45a29e;
 }
 
 .technicalSkills h1 {
@@ -124,6 +142,7 @@
 .project h1 {
     font-size: 5rem;
     text-align: center;
+    color: #66fcf1;
 }
 
 .project h2 {
@@ -137,6 +156,7 @@
 .project h3 {
     font-size: 2rem;
     text-align: center;
+    color: #66fcf1;
 }
 
 .project h4 {
@@ -199,6 +219,7 @@
 .experience h1 {
     font-size: 4rem;
     padding-bottom: 2rem;
+    color: #66fcf1;
 }
 
 .experience ul {
@@ -210,7 +231,7 @@
     display: flex;
     margin-bottom: 2rem;
     padding: .5rem;
-    background-color: powderblue;
+    background-color: #1f2833;
     border: solid black 3px;
     border-radius: 1rem;
 }
@@ -218,6 +239,7 @@
 .job p {
     display: block;
     width: fit-content;
+    color: #66fcf1;
 }
 
 .job div p {
@@ -243,11 +265,13 @@
 .education h2 {
     font-size: 2.5rem;
     margin-bottom: .5rem;
+    color: #66fcf1;
 }
 
 .education h3 {
     text-align: right;
-    font-size: 4rem; 
+    font-size: 4rem;
+    color: #66fcf1; 
 }
 
 .schoolLink, .school, .schoolLinkDiv {
@@ -261,7 +285,7 @@
     padding: 1rem;
     border: solid black 3px;
     border-radius: 3rem;
-    background-color: powderblue;
+    background-color: #1f2833;
 }
 
 .schoolLinkDiv div, .school div {
@@ -270,7 +294,7 @@
 
 .schoolLink {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 .contact {
@@ -293,6 +317,7 @@
 .contact h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
+    color: #66fcf1;
 }
 
 .contact p {
@@ -302,7 +327,7 @@
     border: solid black 3px;
     border-radius: 3rem;
     width: fit-content; 
-    background-color: powderblue;
+    background-color: #1f2833;
 }
 
 .contact a {

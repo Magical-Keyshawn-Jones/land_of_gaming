@@ -355,7 +355,7 @@
     justify-content: space-between
 }
 
-@media (max-width: 425px) {
+@media (max-width: 425px) and (min-width: 425px){
     /* Header */
    .homeHeader h1 {
         font-size: 1.5rem;
@@ -377,7 +377,7 @@
    /* TechnicalSkills */
    .technicalSkills {
         flex-direction: column-reverse;
-   }
+    }
 
    .technicalSkills h1 {
         font-size: 2rem;
@@ -397,6 +397,7 @@
    .project {
        height: 40rem;
        padding: 0;
+       padding-bottom: 2rem;
     }
 
     .project h1 {
@@ -405,9 +406,13 @@
     
     .projectGrid {
         overflow-y: scroll;
-        padding-left: 13.5rem;
         gap: 3rem;
-   }
+        grid-template-columns: 15rem;
+    }
+
+    .coolProject {
+        aspect-ratio: 1/1;
+    }
    
    /* Experience */
    .experience {
@@ -466,4 +471,84 @@
    .linkContainer {
         justify-content: space-around;
    }
+}
+
+@media (max-width: 1440px) and (min-width: 1440px) {
+    .technicalSkills {
+        flex-direction: column-reverse;
+    }
+
+    .technicalSkills h1 {
+        margin-bottom: 1rem;
+    }
+
+    .project {
+        height: 40rem;
+        padding: 0;
+    }
+
+    .projectGrid {
+        /* overflow-y: scroll; */
+    }
+}
+
+@media (max-width: 1024px) and (min-width: 1024px) {
+    .technicalSkills {
+        flex-direction: column-reverse;
+    }
+
+    .technicalSkills  h1 {
+        margin-bottom: 1rem;
+    }
+
+    .skills {
+        overflow-y: scroll;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 768px) {
+    .project {
+        height: 40rem;
+        padding: 0
+    }
+
+    .projectGrid {
+        overflow-y: scroll;
+        padding-left: 33rem;
+        gap: 3rem;
+    }
+
+    .technicalSkills {
+        flex-direction: column-reverse;
+    }
+
+    .technicalSkills h1 {
+        margin-bottom: 1rem;
+    }
+
+    .skills {
+        overflow-y: scroll;
+    }
+}
+
+@media (max-width: 375px) and (min-width: 375px) {
+    .aboutMe {
+        font-size: .5rem;
+    }
+
+    .technicalSkills {
+        flex-direction: column-reverse;
+    }
+
+    .technicalSkills h1 {
+        margin-bottom: 1rem;
+    }
+
+    .skills {
+        overflow-y: scroll;
+    }
+
+    .projectGrid {
+        overflow-y: scroll;
+    }
 }

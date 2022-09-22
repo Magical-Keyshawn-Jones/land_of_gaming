@@ -69,8 +69,55 @@ nav {
 	color: black;
 }
 
+.appBody {
+	width: max-content;
+	max-width: 100%; 
+}
+
 /* Responsive Design */
-@media (max-width: 425px) {
+@media (max-width: 1440px) and (min-width: 1440px) {
+	.navBar {
+		padding-top: .5rem;
+	}
+
+	.navBar h1 {
+		display: none;
+	}
+
+	.link {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 768px) and (min-width: 768px) {
+	.navBar {
+		padding-top: .5rem;
+	}
+
+	.navBar h1 {
+		display: none;
+	}
+
+	.link {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 425px) and (min-width: 425px) {
+	.navBar {
+		padding-top: .5rem;
+	}
+
+	.navBar h1 {
+		display: none;
+	}
+
+	.link {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 375px) and (min-width: 375px) {
 	.navBar {
 		padding-top: .5rem;
 	}

@@ -40,7 +40,7 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
-}
+} 
 /* //////////////////// */
 
 .navBar {
@@ -55,7 +55,6 @@ table {
 .navBar h1 {
 	text-align: center;
 	font-size: 3rem;
-	/* color: white */
 }
 
 nav {
@@ -68,4 +67,19 @@ nav {
 	text-decoration: none;
 	font-size: 2rem;
 	color: black;
+}
+
+/* Responsive Design */
+@media (max-width: 425px) {
+	.navBar {
+		padding-top: .5rem;
+	}
+
+	.navBar h1 {
+		display: none;
+	}
+
+	.link {
+		font-size: 1rem;
+	}
 }

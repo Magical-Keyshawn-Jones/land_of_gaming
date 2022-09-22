@@ -95,7 +95,7 @@
 
 .technicalSkills div {
     display: grid;
-    grid-template-columns: repeat(7, 13rem);
+    grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 1rem;
     margin-right: 1rem;
@@ -169,7 +169,7 @@
     display: grid;
     grid-template-columns: repeat(4, 15rem);
     grid-template-rows: repeat(1, 20rem);
-    /* gap: 10rem; */
+    height: 100%;
     margin-top: 2rem;
     justify-content: space-evenly;
 }
@@ -227,6 +227,10 @@
     list-style-position:inside;
 }
 
+.experience ul li {
+    margin-bottom: 1rem;
+}
+
 .job {
     display: flex;
     margin-bottom: 2rem;
@@ -240,6 +244,7 @@
     display: block;
     width: fit-content;
     color: #66fcf1;
+    padding-bottom: .3rem;
 }
 
 .job div p {
@@ -254,6 +259,10 @@
     margin-top: 2rem;
     font-size: 1.8rem;
     border-bottom: solid black 3px;
+}
+
+.education p {
+    margin-bottom: .5rem;
 }
 
 .schoolHelper {
@@ -274,7 +283,8 @@
     color: #66fcf1; 
 }
 
-.schoolLink, .school, .schoolLinkDiv {
+/* .schoolLink, .school, .schoolLinkDiv { */
+ .school, .schoolLinkDiv {
     display: flex;
     align-self: center;
 }
@@ -343,4 +353,117 @@
 .linkContainer {
     display: flex;
     justify-content: space-between
+}
+
+@media (max-width: 425px) {
+    /* Header */
+   .homeHeader h1 {
+        font-size: 1.5rem;
+   } 
+
+   .aboutMe {
+        font-size: .5rem;
+   }
+
+   .aboutMe h1 {
+    font-size: 1rem;
+    border: solid black 2px;
+   }
+
+   .profilePic {
+        height: 100%;
+   }
+
+   /* TechnicalSkills */
+   .technicalSkills {
+        flex-direction: column-reverse;
+   }
+
+   .technicalSkills h1 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+   }
+
+   .skills {
+        overflow-y: scroll;
+   }
+
+   .skills p {
+        font-size: 1rem;
+   }
+   
+   /* Project */
+   .project {
+       height: 40rem;
+       padding: 0;
+    }
+
+    .project h1 {
+        font-size: 2rem;
+    }
+    
+    .projectGrid {
+        overflow-y: scroll;
+        padding-left: 13.5rem;
+        gap: 3rem;
+   }
+   
+   /* Experience */
+   .experience {
+    font-size: 1rem;
+   }
+
+   .experience h1 {
+        font-size: 2rem;
+        text-align: center;
+   }
+
+   .job {
+        flex-direction: column;
+   }
+
+   .job p {
+        padding-bottom: .5rem;
+   }
+
+   /* Education */
+   .schoolHelper {
+    flex-direction: column;
+   }
+
+   .education {
+        font-size: 1rem;
+   }
+
+   .education p {
+        margin-bottom: .5rem;
+   }
+
+   .education h2 {
+        font-size: 1rem;
+   }
+
+   .education h3 {
+        font-size: 2rem;
+        text-align: center;
+        margin-bottom: 1rem;
+   }
+
+   /* Contact */
+   .contact h1 {
+        font-size: 1.7rem;
+   }
+
+   .contact p {
+        font-size: 1rem;
+   }
+
+   .githubLink, .linkedInLink {
+        width: 5vh;
+   }
+
+   .linkContainer {
+        justify-content: space-around;
+   }
 }

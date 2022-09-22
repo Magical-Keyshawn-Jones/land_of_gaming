@@ -103,7 +103,7 @@ nav {
 	}
 }
 
-@media (max-width: 425px) and (min-width: 425px) {
+@media (max-width: 425px) {
 	.navBar {
 		padding-top: .5rem;
 	}

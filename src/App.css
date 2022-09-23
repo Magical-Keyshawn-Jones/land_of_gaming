@@ -70,12 +70,25 @@ nav {
 }
 
 .appBody {
-	width: max-content;
-	max-width: 100%; 
+	width: 100%;
 }
 
 /* Responsive Design */
 @media (max-width: 1440px) and (min-width: 1440px) {
+	.navBar {
+		padding-top: .5rem;
+	}
+
+	.navBar h1 {
+		display: none;
+	}
+
+	.link {
+		font-size: 1rem;
+	}
+}
+
+@media (max-width: 1024px) {
 	.navBar {
 		padding-top: .5rem;
 	}

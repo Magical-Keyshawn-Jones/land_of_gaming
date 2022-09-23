@@ -357,6 +357,75 @@
 
 
 /* Responsive Designs */
+/* @media (max-width: 1440px) and (min-width: 1440px) { */
+@media (max-width: 1440px) {
+/* @media (min-width: 1440px) { */
+    .technicalSkills {
+        flex-direction: column-reverse;
+    }
+
+    .technicalSkills h1 {
+        margin-bottom: 1rem;
+    }
+
+    .project {
+        height: 40rem;
+        padding: 0;
+    }
+
+    .projectGrid {
+        /* overflow-y: scroll; */
+    }
+}
+
+/* @media (max-width: 1024px) and (min-width: 1024px) { */
+@media (max-width: 1024px) {
+/* @media (min-width: 1024px) { */
+
+    .technicalSkills {
+        flex-direction: column-reverse;
+    }
+    
+
+    .technicalSkills  h1 {
+        margin-bottom: 1rem;
+    }
+    
+    .skills {
+        overflow-y: scroll;
+    }
+
+    .projectGrid {
+        overflow-y: scroll;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 768px) {
+    /* @media (max-width: 768px) { */
+        /* @media (min-width: 768px) { */
+            .project {
+        height: 40rem;
+        padding: 0
+    }
+    
+    .projectGrid {
+        overflow-y: scroll;
+        padding-left: 33rem;
+        gap: 3rem;
+    }
+    
+    .technicalSkills {
+        flex-direction: column-reverse;
+    }
+    
+    .technicalSkills h1 {
+        margin-bottom: 1rem;
+    }
+    
+    .skills {
+        /* overflow-y: scroll; */
+    }
+}
 
 /* @media (max-width: 425px) and (min-width: 425px) { */
 @media (max-width: 425px) {
@@ -478,73 +547,9 @@
    }
 }
 
-/* @media (max-width: 1440px) and (min-width: 1440px) { */
-@media (max-width: 1440px) {
-/* @media (min-width: 1440px) { */
-    .technicalSkills {
-        flex-direction: column-reverse;
-    }
-
-    .technicalSkills h1 {
-        margin-bottom: 1rem;
-    }
-
-    .project {
-        height: 40rem;
-        padding: 0;
-    }
-
-    .projectGrid {
-        /* overflow-y: scroll; */
-    }
-}
-
-/* @media (max-width: 1024px) and (min-width: 1024px) { */
-@media (max-width: 1024px) {
-/* @media (min-width: 1024px) { */
-    .technicalSkills {
-        flex-direction: column-reverse;
-    }
-
-    .technicalSkills  h1 {
-        margin-bottom: 1rem;
-    }
-
-    .skills {
-        overflow-y: scroll;
-    }
-}
-
-@media (max-width: 768px) and (min-width: 768px) {
-/* @media (max-width: 768px) { */
-/* @media (min-width: 768px) { */
-    .project {
-        height: 40rem;
-        padding: 0
-    }
-
-    .projectGrid {
-        overflow-y: scroll;
-        padding-left: 33rem;
-        gap: 3rem;
-    }
-
-    .technicalSkills {
-        flex-direction: column-reverse;
-    }
-
-    .technicalSkills h1 {
-        margin-bottom: 1rem;
-    }
-
-    .skills {
-        overflow-y: scroll;
-    }
-}
-
 /* @media (max-width: 375px) and (min-width: 375px) { */
-/* @media (max-width: 375px) { */
-@media (min-width: 375px) {
+@media (max-width: 375px) {
+/* @media (min-width: 375px) { */
     .aboutMe {
         font-size: .5rem;
     }
@@ -564,4 +569,5 @@
     .projectGrid {
         overflow-y: scroll;
     }
+
 }

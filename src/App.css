@@ -65,8 +65,12 @@ nav {
 
 .link {
 	text-decoration: none;
-	font-size: 2rem;
+	font-size: 1.7rem;
 	color: black;
+}
+
+.link:nth-child(1) {
+	color: rgb(0, 247, 255);
 }
 
 .appBody {

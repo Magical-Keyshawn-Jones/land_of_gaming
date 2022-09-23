@@ -2,14 +2,14 @@ import './App.css';
 import { connect } from 'react-redux';
 
 // Make navBar look professional
-
+// Add fun anime gifs and pictures everywhere, decorate the website
 // KnuckleBones Imports
 import { 
   one, two, three, four, five, six
 } from './KnuckleBones/knuckleBonesLogic';
 
 // Applications Imports
-import { KnuckleBones, HomePage } from './Storage/appExports'
+import { HomePage, KnuckleBones, TicTacToe } from './Storage/appExports'
 import { Link, Routes, Route } from 'react-router-dom'
 
 // Games I want to make
@@ -26,6 +26,7 @@ function App() {
         <nav>
           <Link to='/' className='link homeButton' > Portfolio </Link>
           <Link to='/KnuckleBones' className='link' > KnuckleBones </Link>
+          <Link to='/TicTacToe' className='link' > TicTacToe </Link>
         </nav>
       </header>
 
@@ -39,8 +40,8 @@ function App() {
         five={five}
         six={six}
         />} />
+        <Route path='/TicTacToe' element={<TicTacToe/>} />
       </Routes>
-
     </main>
   );
 }

@@ -1,6 +1,6 @@
 import './homePageStyles.css'
 import Profile_Pic  from '../Images/HomePage/Profile_Pic.jpg'
-import GithubLogo from '../Images/HomePage/GithubLogo.png'
+import GithubLogo from '../Images/HomePage/GithubLogoWhite.png'
 import LinkedInLogo from '../Images/HomePage/LinkedInLogo.png'
 import { technicalSkills, projects, jobs, education } from './homeVariables'
 

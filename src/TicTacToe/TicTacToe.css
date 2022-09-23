@@ -1,0 +1,27 @@
+
+.tttBody::before {
+    position: absolute;
+    content: '';
+    background-color: grey;
+    background-image: url('../Images/TicTacToe/ZenitsuSleeping.gif');
+    width: 100%;
+    height: 100%;
+    opacity: .3;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+
+.tttBody div {
+    display: flex;
+    position: relative;
+    top: 20rem;
+    font-size: 5rem;
+    z-index: 1;
+    justify-content: center;
+}
+
+.tttBody h1 {
+    border: solid black .5rem;
+    background-color: white;
+}

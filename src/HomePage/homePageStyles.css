@@ -1,4 +1,4 @@
-
+/* HomePage */
 .homePage {
     padding: .3rem 2rem 0 2rem;
     height: 100%;
@@ -82,6 +82,7 @@
     width: 100%;
 }
 
+/* Technical Skills */
 .technicalSkills {
     display: flex;
     margin-top: 3rem;
@@ -128,6 +129,7 @@
     font-size: 4rem
 }
 
+/* Project */
 .project {
     display: flex;
     margin-top: 3rem;
@@ -169,8 +171,9 @@
 }
 .projectGrid {
     display: grid;
-    grid-template-columns: repeat(4, 15rem);
+    grid-template-columns: repeat(5, 15rem);
     grid-template-rows: repeat(1, 20rem);
+    gap: 5.5rem;
     height: 100%;
     margin-top: 2rem;
     justify-content: space-evenly;
@@ -209,6 +212,7 @@
     object-position: cover;
 }
 
+/* Experience */
 .experience {
     display: flex;
     flex-direction: column;
@@ -254,6 +258,7 @@
     margin-bottom: 1rem;
 }
 
+/* Education */
 .education {
     display: flex;
     flex-direction: column;
@@ -309,6 +314,7 @@
     color: white;
 }
 
+/* Contact */
 .contact {
     display: flex;
     flex-direction: column;
@@ -359,9 +365,7 @@
 
 
 /* Responsive Designs */
-/* @media (max-width: 1440px) and (min-width: 1440px) { */
 @media (max-width: 1440px) {
-/* @media (min-width: 1440px) { */
     .technicalSkills {
         flex-direction: column-reverse;
     }
@@ -376,8 +380,9 @@
     }
 
     .projectGrid {
-        /* overflow-y: scroll; */
+        overflow-y: scroll;
     }
+
 }
 
 @media (max-width: 1024px) {

@@ -14,10 +14,16 @@ const technicalSkills = [
 
 const projects = [
 {
+    title: 'Land of Gaming',
+    image: CodingLife,
+    skills: ['JavaScript', 'React', 'Cypress', 'Responsive Design'],
+    link: 'https://github.com/Magical-Keyshawn-Jones/land_of_gaming.git'
+},
+{
     title: 'LittleFuzzy',
     image: CodingLife,
     skills: ["JavaScript", "React.js", "Redux", "Yup", "Jest", "Cypress", "Axios", "Responsive Design"],
-    link: ['https://littlefuzzy.vercel.app/']
+    link: ['https://github.com/Magical-Keyshawn-Jones/littlefuzzy.git']
 },
 {
     title: 'Authenticating and Testing',

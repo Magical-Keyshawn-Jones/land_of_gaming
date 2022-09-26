@@ -7,9 +7,12 @@ import './TicTacToe.css'
 function TicTacToe () {
     return (
         <main className='tttBody'>
-            <div>
+            <div className='tttConstruction'>
                 <h1>Under Construction at the moment</h1>
             </div>
+            <section className='tttRules'>
+                Insert Rules here!!!
+            </section>
         </main>
     )
 }

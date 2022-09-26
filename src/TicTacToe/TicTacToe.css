@@ -23,5 +23,12 @@
 
 .tttBody h1 {
     border: solid black .5rem;
-    background-color: white;
+    background-color: #1f2833;
+    color: #66fcf1;
+    padding: 0 .5rem;
+}
+
+/* Construction Sign */
+.tttBody::before, .tttConstruction {
+    display: none !important;
 }

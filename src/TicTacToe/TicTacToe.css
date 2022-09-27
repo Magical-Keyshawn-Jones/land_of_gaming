@@ -1,11 +1,27 @@
 /* Body */
+/* Construction Sign */
+/* .tttBody::before, .tttConstruction {
+    display: none !important;
+} */
+
+.tttBody {
+    color: white;
+    background-color: #0b0c10;
+    /* background-color: #1f2833; */
+    height: 52.86rem;
+}
+
+.tttBody main {
+    padding: .3rem 2rem 0 2rem;
+}
+
 .tttBody::before {
     position: absolute;
     display: flex; 
     content: '';
     background-color: grey;
     width: 100%;
-    height: 100%;
+    height: 120%;
 }
 
 
@@ -39,22 +55,6 @@
     width: 20rem;
     height: auto;
     align-self: center;
-}
-
-/* Construction Sign */
-/* .tttBody::before, .tttConstruction {
-    display: none !important;
-} */
-
-.tttBody {
-    color: white;
-    background-color: #0b0c10;
-    /* background-color: #1f2833; */
-    height: 80rem;
-}
-
-.tttBody main {
-    padding: .3rem 2rem 0 2rem;
 }
 
 .tttXO {
@@ -135,11 +135,27 @@
 
 .tttBoxes h2 {
     text-align: center;
-    font-size: 5rem;
+    font-size: 6rem;
 }
 
 .tttWinner {
+    display: flex;
+    flex-direction: column;
     margin-top: 1rem;
     font-size: 4rem;
     align-self: center;
+    align-items: center;
+}
+
+.tttWinner button {
+    font-size: 1.5rem;
+    margin-top: .5rem;
+    width:fit-content;
+    text-align: center;
+    background-color: #1f2833;
+    color: #66fcf1;
+}
+
+.click {
+    pointer-events: none;
 }

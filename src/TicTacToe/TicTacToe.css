@@ -1,34 +1,145 @@
-
+/* Body */
 .tttBody::before {
     position: absolute;
+    display: flex; 
     content: '';
     background-color: grey;
-    background-image: url('../Images/TicTacToe/ZenitsuSleeping.gif');
     width: 100%;
     height: 100%;
-    opacity: .3;
-    text-align: center;
-    text-transform: capitalize;
 }
 
 
-.tttBody div {
+.tttConstruction {
     display: flex;
-    position: relative;
-    top: 20rem;
-    font-size: 5rem;
-    z-index: 1;
+    position: absolute;
+    flex-direction: column;
     justify-content: center;
+    z-index: 1;
+    height: 98%;
+    width: 98%;
+    font-size: 5rem;
 }
 
-.tttBody h1 {
+.tttConstruction h1 {
     border: solid black .5rem;
     background-color: #1f2833;
+    width: fit-content;
     color: #66fcf1;
     padding: 0 .5rem;
+    text-align: center;
+    align-self: center;
+}
+
+.tttConstruction img {
+    height: 100%;
+    width: 100%;
+}
+
+.tttConstruction div {
+    width: 20rem;
+    height: auto;
+    align-self: center;
 }
 
 /* Construction Sign */
 /* .tttBody::before, .tttConstruction {
     display: none !important;
 } */
+
+.tttBody {
+    color: white;
+    background-color: #0b0c10;
+    /* background-color: #1f2833; */
+    height: 80rem;
+}
+
+.tttBody main {
+    padding: .3rem 2rem 0 2rem;
+}
+
+.tttXO {
+    display: flex;
+    justify-content: center;
+}
+
+.tttXO h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.tttXO button {
+    font-size: 2.5rem;
+    height: 3rem;
+    width: auto;
+    aspect-ratio: 1/1;
+}
+
+.noDisplay {
+    display: none !important;
+}
+
+.tttXO div div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tttGameArea {
+    display: flex;
+    flex-direction: column;
+}
+
+.tttTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: .5rem;
+}
+
+.tttTitle h1 {
+    font-size: 4rem;
+    color: #66fcf1;
+}
+
+.tttTitle div {
+    display: flex;
+    font-size: 2rem;
+    width: 35%;
+    justify-content: space-evenly
+}
+
+.tttTitle p {
+    width: fit-content;
+}
+
+.ttt {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: .1rem;
+    height: 30rem;
+    align-self: center;
+    width: auto;
+    /* background-color: #45a29e; */
+    /* border: solid black 5px; */
+    aspect-ratio: 1/1;
+}
+
+.tttBoxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1f2833;
+    border: solid black 5px;
+}
+
+.tttBoxes h2 {
+    text-align: center;
+    font-size: 5rem;
+}
+
+.tttWinner {
+    margin-top: 1rem;
+    font-size: 4rem;
+    align-self: center;
+}

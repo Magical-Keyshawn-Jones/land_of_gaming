@@ -5,6 +5,7 @@ import LinkedInLogo from '../Images/HomePage/LinkedInLogo.png'
 import { technicalSkills, projects, jobs, education } from './homeVariables'
 
 // Make nav bar look professional
+// Add Pictures to projects
 // Add animated on scroll in the css, render things as they appear
 
 export default function HomePage () {

@@ -48,18 +48,15 @@ function TicTacToe () {
             boxes[index] = player1
             setBox(boxes)
             setTurn(player2)
-            boxes[index].classList.add('noClick')
         } else if (computer === false) {
             if (playerTurn === true) {
                 boxes[index] = player1
                 setBox(boxes)
                 setPlayerTurn(false)
-                boxes[index].classList.add('noClick')
             } else if (playerTurn === false) {
                 boxes[index] = player2
                 setBox(boxes)
                 setPlayerTurn(true)
-                boxes[index].classList.add('noClick')
             }
         }
     }

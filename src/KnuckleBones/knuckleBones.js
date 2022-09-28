@@ -239,7 +239,7 @@ if (turn === 2) {
     const numberList = []
     opponentNumbers.forEach(number => numberList.push(number))
     
-    // Variable with only numbers from the list
+    // Variable with only numbers from the list 
     const goodNumbers = list.filter(number => number === Number(number))
     // Randomly Selecting a number from the goodNumbers
     const randomNumber = Math.floor(Math.random() * goodNumbers.length)

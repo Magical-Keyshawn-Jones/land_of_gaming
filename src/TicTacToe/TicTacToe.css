@@ -1,8 +1,8 @@
 /* Body */
 /* Construction Sign */
-/* .tttBody::before, .tttConstruction {
+.tttBody::before, .tttConstruction {
     display: none !important;
-} */
+}
 
 .tttBody {
     color: white;
@@ -74,13 +74,36 @@
     aspect-ratio: 1/1;
 }
 
+.tttXO div div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tttChoose {
+    display: flex;
+    justify-content: center;
+}
+
+.tttChoose h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.tttChoose button {
+    font-size: 2.5rem;
+}
+
+.tttChoose div div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .noDisplay {
     display: none !important;
 }
 
-.tttXO div div {
-    display: flex;
-    justify-content: space-evenly;
+.display {
+    display: block !important;
 }
 
 .tttGameArea {
@@ -133,6 +156,10 @@
     border: solid black 5px;
 }
 
+.tttBoxes:hover {
+    border: solid #66fcf1 5px;
+}
+
 .tttBoxes h2 {
     text-align: center;
     font-size: 6rem;
@@ -156,6 +183,6 @@
     color: #66fcf1;
 }
 
-.click {
+.noClick {
     pointer-events: none;
 }

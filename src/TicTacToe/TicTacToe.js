@@ -18,71 +18,96 @@ function TicTacToe () {
     const tttBox = ['', '', '', '', '', '', '', '', '']
     const [box, setBox] = useState(tttBox)
     
-    const [player1, setPlayer1] = useState()
-    const [player2, setPlayer2] = useState()
+    const [player1, setPlayer1] = useState('x')
+    const [player2, setPlayer2] = useState('o')
+    const [computer, setComputer] = useState(false)
     const [winner, setWinner] = useState()
     const [turn, setTurn] = useState()
+    const [playerTurn, setPlayerTurn] = useState(true)
 
-    const topPage = document.getElementsByClassName('tttXO')
+    const xoSelector = document.getElementsByClassName('tttXO')
+    const chooseOpponent = document.getElementsByClassName('tttChoose')
     const bottomPage = document.getElementsByClassName('tttGameArea')
     const boxes = document.getElementsByClassName('tttBoxes')
 
+    
     function restart() {
         setBox(tttBox)
         setPlayer1()
         setPlayer2()
         setWinner()
-        topPage[0].classList.toggle('noDisplay')
+        xoSelector[0].classList.toggle('noDisplay')
         bottomPage[0].classList.toggle('noDisplay')
-        box.forEach((item, index) => boxes[index].classList.remove('click'))
+        box.forEach((item, index) => boxes[index].classList.remove('noClick'))
     }
-    
     function boxSelector(index) {
         const boxes = []
         box.forEach(item => boxes.push(item))
-        boxes[index] = player1
-        setBox(boxes)
-        setTurn(player2)
+
+        if (computer === true) {
+            boxes[index] = player1
+            setBox(boxes)
+            setTurn(player2)
+            boxes[index].classList.add('noClick')
+        } else if (computer === false) {
+            if (playerTurn === true) {
+                boxes[index] = player1
+                setBox(boxes)
+                setPlayerTurn(false)
+                boxes[index].classList.add('noClick')
+            } else if (playerTurn === false) {
+                boxes[index] = player2
+                setBox(boxes)
+                setPlayerTurn(true)
+                boxes[index].classList.add('noClick')
+            }
+        }
     }
 
-    function tttFactory(item, index) {
+    function tttFactory(item, number) {
         return (
-            <div onClick={() => {boxSelector(index)}} className='tttBoxes' key={index}>
+            <div onClick={() => {boxSelector(number)}} className='tttBoxes' key={number}>
                 <h2> {item} </h2>
             </div>
         )
     }
-
+    
     function xo (item) {
         if (item === 'X') {
             setPlayer1(item)
             setPlayer2('O')
-            topPage[0].classList.toggle('noDisplay')
-            bottomPage[0].classList.toggle('noDisplay')
+            xoSelector[0].classList.toggle('noDisplay')
+            chooseOpponent[0].classList.toggle('noDisplay')
         } else if (item === 'O') {
             setPlayer1(item)
             setPlayer2('X')
-            topPage[0].classList.toggle('noDisplay')
-            bottomPage[0].classList.toggle('noDisplay')
+            xoSelector[0].classList.toggle('noDisplay')
+            chooseOpponent[0].classList.toggle('noDisplay')
         }
     }
 
-    // // Ai Opponent
-    if (turn === player2) {
-        const boxes = []
-        box.forEach(item => boxes.push(item))
+    function choosingOpponent(answer) {
+        setComputer(answer)
+        chooseOpponent[0].classList.toggle('noDisplay')
+        bottomPage[0].classList.toggle('noDisplay')
+    }
 
-        const newBoxes = boxes.filter(item => item !== player1)
-        const rNumber = Math.floor(Math.random() * newBoxes.length)
-        
-        const index = boxes.indexOf(newBoxes[rNumber])
-        boxes[index] = player2
-        // setTurn(player1)
-        // setBox(boxes)
+    // // Ai Opponent
+    if (computer === true) {
+        if (turn === player2) {
+            const boxes = []
+            box.forEach(item => boxes.push(item))
+    
+            const newBoxes = boxes.filter(item => item !== player1)
+            const rNumber = Math.floor(Math.random() * newBoxes.length)
+            
+            const index = boxes.indexOf(newBoxes[rNumber])
+            boxes[index] = player2
+            setBox(boxes)
+            setTurn(player1)
+        }
     }
     
-    // useEffect(()=>{},[turn])
-
     useEffect(()=>{
         winConditions(box, boxes, setWinner)
     })
@@ -107,6 +132,15 @@ function TicTacToe () {
                     </div>
                 </div>
             </section>
+            <section className='tttChoose noDisplay'>
+                <div>
+                    <h1>Choose your Opponent</h1>
+                    <div>
+                        <button onClick={()=>{choosingOpponent(false)}}>Player</button>
+                        <button onClick={()=>{choosingOpponent(true)}}>Computer</button>
+                    </div>
+                </div>
+            </section>
 
             <section className='tttGameArea noDisplay'>
                 <div className='tttTitle'>
@@ -122,6 +156,7 @@ function TicTacToe () {
                     })}
                 </div>
                 <div className='tttWinner'>
+                    {!winner ? <p className='turn display'>{playerTurn === true ? `${player1} Turn` : `${player2} Turn`}</p> : ''}
                     <p>{!winner ? '' : `${winner} Wins!`}</p>
                     {!winner ? '' : <button onClick={()=>{restart()}}>Restart</button>}
                 </div>

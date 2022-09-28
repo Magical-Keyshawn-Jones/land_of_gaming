@@ -9,14 +9,20 @@ import {
 } from './KnuckleBones/knuckleBonesLogic';
 
 // Applications Imports
-import { HomePage, KnuckleBones, TicTacToe } from './Storage/appExports'
+import { 
+  HomePage, KnuckleBones, TicTacToe, Hangman
+} from './Storage/appExports'
 import { Link, Routes, Route } from 'react-router-dom'
 
-// Games I want to make
-// TicTacTo,
-// Fortune Things (You shake it and it gives an answer)  
-// This could be optimized(honestly, look better) by not sending everything through the Parent and instead send to directly to the child I'm sending it to
-
+/*Games I want to make
+  HangMan
+  Remake TicTacToe with UnbeatAble AI
+  Guess the Number/User 
+  Rock Paper Scissors
+  password generator
+  Fortune Things (You shake it and it gives an answer)  
+  This could be optimized(honestly, look better) by not sending everything through the Parent and instead send to directly to the child I'm sending it to
+*/
 function App() {
 
   return (
@@ -27,6 +33,7 @@ function App() {
           <Link to='/' className='link homeButton' > Portfolio </Link>
           <Link to='/KnuckleBones' className='link' > KnuckleBones </Link>
           <Link to='/TicTacToe' className='link' > TicTacToe </Link>
+          <Link to='/Hangman' className='link' > Hangman </Link>
         </nav>
       </header>
 
@@ -41,6 +48,7 @@ function App() {
         six={six}
         />} />
         <Route path='/TicTacToe' element={<TicTacToe/>} />
+        <Route path='/Hangman' element={<Hangman/>} />
       </Routes>
     </main>
   );

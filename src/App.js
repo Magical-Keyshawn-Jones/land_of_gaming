@@ -45,7 +45,7 @@ function App() {
     axios.get('/welcome') 
     .then(res => {
       setData(res.data)
-      console.log(res.data)
+      // console.log(res.data.message)
     })
     .catch(err => {
       console.log('Error!', err)
@@ -55,7 +55,7 @@ function App() {
   return (
     <main className='appBody'>
       <header className='navBar'>
-        <h1>{!data.message ? 'Games' : data.message}</h1>
+        <h1>{data.Message}</h1>
         <nav>
           <Link to='/' className='link homeButton' > Portfolio </Link>
           <Link to='/KnuckleBones' className='link' > KnuckleBones </Link>
@@ -65,7 +65,7 @@ function App() {
       </header>
 
       <Routes>
-        <Route path='/' element={<HomePage/>} />
+        <Route path='/' element={<HomePage test={data.message} />} />
         <Route path='/KnuckleBones' element={<KnuckleBones
         one={one}
         two={two}

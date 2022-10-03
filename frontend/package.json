@@ -2,7 +2,7 @@
   "name": "land_of_gaming",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:8000",
+  "proxy": "https://land-of-gaming.herokuapp.com/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.4",
     "@testing-library/jest-dom": "^5.16.5",

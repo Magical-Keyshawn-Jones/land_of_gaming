@@ -6,12 +6,12 @@ from flask_cors import CORS, cross_origin
 app = Flask(__name__, static_folder='frontend/build', static_url_path='')
 CORS(app)
 
-@app.router('/api', methods=['GET'])
+@app.route('/api', methods=['GET'])
 @cross_origin()
 def welcome():
     return {"message": "Welcome to my API"}
 
-@app.router('/')
+@app.route('/')
 def serve():
     return send_from_directory(app.static_folder, 'index.html')
 

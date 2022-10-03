@@ -7,6 +7,17 @@ import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { kbUserBoxes } from './Storage/Redux/Redux';
 
+// const express = require('express')
+
+// const server = express()
+
+// server.use(express.json())
+
+// server.use('/', (req, res) => {
+//     console.log('You did it!')
+//     res.json({message: 'Welcome to Land of Gaming!'})
+// })
+
 export const storage = configureStore({
   reducer: {
     kbUserBoxes: kbUserBoxes.reducer

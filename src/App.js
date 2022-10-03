@@ -1,9 +1,7 @@
 import './App.css';
 import { connect } from 'react-redux';
-
-// Make navBar look professional
-// Add fun anime gifs and pictures everywhere, decorate the website
-// KnuckleBones Imports
+import { useState, useEffect } from 'react'
+import axios from 'axios';
 import { 
   one, two, three, four, five, six
 } from './KnuckleBones/knuckleBonesLogic';
@@ -14,6 +12,10 @@ import {
 } from './Storage/appExports'
 import { Link, Routes, Route } from 'react-router-dom'
 
+
+// Make navBar look professional
+// Add fun anime gifs and pictures everywhere, decorate the website
+// KnuckleBones Imports
 /*Games I want to make
   HangMan
   Remake TicTacToe with UnbeatAble AI
@@ -23,12 +25,37 @@ import { Link, Routes, Route } from 'react-router-dom'
   Fortune Things (You shake it and it gives an answer)  
   This could be optimized(honestly, look better) by not sending everything through the Parent and instead send to directly to the child I'm sending it to
 */
+
+// const express = require('express')
+
+// const server = express()
+
+// server.use(express.json())
+
+// server.use('/', (req, res) => {
+//     console.log('You did it!')
+//     res.json({message: 'Welcome to Land of Gaming!'})
+// })
+
 function App() {
+  // Storing API data 
+  const [data, setData] = useState([])
+
+  useEffect(()=>{
+    axios.get('/welcome') 
+    .then(res => {
+      setData(res.data)
+      console.log(res.data)
+    })
+    .catch(err => {
+      console.log('Error!', err)
+    })
+  },[])
 
   return (
     <main className='appBody'>
       <header className='navBar'>
-        <h1>Games</h1>
+        <h1>{!data.message ? 'Games' : data.message}</h1>
         <nav>
           <Link to='/' className='link homeButton' > Portfolio </Link>
           <Link to='/KnuckleBones' className='link' > KnuckleBones </Link>

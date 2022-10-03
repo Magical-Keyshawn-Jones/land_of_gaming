@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9e3e2a98.css",
+    "main.js": "/static/js/main.28f3dcb7.js",
+    "static/media/ZenitsuSleeping.gif": "/static/media/ZenitsuSleeping.197b98121a44584cc2d3.gif",
+    "static/media/Profile_Pic.jpg": "/static/media/Profile_Pic.d58a89306205a9573755.jpg",
+    "static/media/doNotDisturb.jpg": "/static/media/doNotDisturb.1fe651e9782da5cdf1d4.jpg",
+    "static/media/LinkedInLogo.png": "/static/media/LinkedInLogo.66ffd29ac1bb3de67249.png",
+    "static/media/Coding-Life.jpg": "/static/media/Coding-Life.86f1b2ed652983d64075.jpg",
+    "index.html": "/index.html",
+    "main.9e3e2a98.css.map": "/static/css/main.9e3e2a98.css.map",
+    "main.28f3dcb7.js.map": "/static/js/main.28f3dcb7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9e3e2a98.css",
+    "static/js/main.28f3dcb7.js"
+  ]
+}

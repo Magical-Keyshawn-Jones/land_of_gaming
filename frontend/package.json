@@ -45,5 +45,9 @@
   "devDependencies": {
     "cypress": "^10.6.0",
     "nodemon": "^2.0.20"
+  },
+  "engines": {
+    "node": "v18.8.0",
+    "npm": "8.18.0"
   }
 }

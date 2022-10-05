@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import django_heroku
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -75,13 +76,24 @@ WSGI_APPLICATION = 'djProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Video Games',
+#         'USER': 'killz',
+#         'PASSWORD': '2',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Video Games',
-        'USER': 'killz',
-        'PASSWORD': '2',
-        'HOST': 'localhost',
+        'NAME': 'dfrcs6av1mtr22',
+        'USER': 'wafejvzhdythag',
+        'PASSWORD': '39dd989c6ba2a45ba06bd76375fefc51fffa5e4a4c02c40203ddb7a94641214f',
+        'HOST': 'ec2-44-206-137-96.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
@@ -122,12 +134,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+django_heroku.settings(locals())
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/build/static')
-]
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'frontend/build/static')
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

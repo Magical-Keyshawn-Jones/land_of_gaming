@@ -3,9 +3,9 @@ import DoNotDisturb from '../Images/HomePage/doNotDisturb.jpg'
 
 
 const technicalSkills = [
-    'HTML', 'CSS', 'Less', 'JavaScript', 'TypeScript', 'React', 'Context API', 
-    'Express.JS', 'Node.JS', 'Responsive Design', 'Jest', 'Cypress', 
-    'SQLlite', 'Postgres', 'Asynchronous JavaScript', 'Axios', 'RESTful Architecture', 
+    'HTML', 'CSS', 'Less', 'JavaScript', 'TypeScript', 'Python', 'React', 'Context API', 
+    'Express.JS', 'Node.JS', 'Responsive Design', 'Jest', 'Cypress', 'SQL',
+    'SQLlite', 'PostgreSQL', 'Asynchronous JavaScript', 'Axios', 'RESTful Architecture', 
     'Authentication','Single Page Applications', 'React Hooks', 'git', 'Github', 'Heroku', 
     'Computer Architecture', 'Automated Unit Testing', 'End-To-End Testing', 'Integration Testing', 
     'Deployment', 'Knex', 'Relational DataBases', 'Debugging', 'Algorithms', 'Agile Project Management',

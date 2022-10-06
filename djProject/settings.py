@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('secret key')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['*']
 
@@ -90,10 +90,10 @@ WSGI_APPLICATION = 'djProject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dfrcs6av1mtr22',
-        'USER': 'wafejvzhdythag',
-        'PASSWORD': '39dd989c6ba2a45ba06bd76375fefc51fffa5e4a4c02c40203ddb7a94641214f',
-        'HOST': 'ec2-44-206-137-96.compute-1.amazonaws.com',
+        'NAME': 'd87nolot11jagi',
+        'USER': 'mqxlncwoybgqjp',
+        'PASSWORD': 'ce783a359e1cb5b832593bc3840e5fd2e70dce232c3e2652e45fa72424c9f59d',
+        'HOST': 'ec2-18-208-55-135.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }

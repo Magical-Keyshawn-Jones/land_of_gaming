@@ -5,8 +5,7 @@ from .models import VideoGames
 
 # Create your views here.
 def index(request):
-    test = {"message": "Welcome to my Django/Python/React/API!!!"}
-    return JsonResponse({'message': test})
+    return render(request, 'index.html')
 
 def deeper(request):
     return ({"message": 'Going deeper I see..'})

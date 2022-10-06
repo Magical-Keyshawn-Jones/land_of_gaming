@@ -1,10 +1,12 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from .models import Question
+from .models import VideoGames
+# Make a separate folder for views to organize functions
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    test = {"message": "Welcome to my Django/Python/React/API!!!"}
+    return JsonResponse({'message': test})
 
 def deeper(request):
     return ({"message": 'Going deeper I see..'})
@@ -23,8 +25,17 @@ def testingJSON(request):
         }
     ]
 
-    # data = {'comments' : comments}
+    return JsonResponse({'comments': comments})
 
-    # return render(request, 'index.html', data)
+def insertData(request):
+    if request.method == 'POST':
+        title = request.POST['title']
+        rating = request.POST['rating']
+        platform = request.POST['platform']
 
-    return JsonResponse({'comments' : comments})
+        newVideoGame = VideoGames(title = title, rating = rating, platform = platform)
+        newVideoGame.save()
+    
+    message = {"message": "Successfully created a review"}
+
+    return JsonResponse({'message': message})

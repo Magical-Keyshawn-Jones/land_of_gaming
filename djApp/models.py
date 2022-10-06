@@ -1,19 +1,15 @@
 from django.db import models
-from django.utils import timezone
-import datetime
 
-# Create your models here.
-class Question(models.Model):
-    question_text = models.CharField(max_length = 200)
-    pub_date = models.DateTimeField('data published')
-    def __str__(self):
-        return self.question_text
-    def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
-class Choice(models.Model):
-    question: models.ForeignKey(Question, on_delete = models.CASCADE)
-    choice_text = models.CharField(max_length = 200)
-    votes = models.IntegerField(default = 0)
-    def __str__(self):
-        return self.choice_text
+class VideoGames(models.Model):
+    id = models.AutoField(db_column='Id', primary_key=True)  # Field name made lowercase.
+    title = models.TextField(db_column='Title')  # Field name made lowercase.
+    rating = models.IntegerField(db_column='Rating')  # Field name made lowercase.
+    preordered = models.BooleanField(db_column='PreOrdered', blank=True, null=True)  # Field name made lowercase.
+    comment = models.TextField(db_column='Comment', blank=True, null=True)  # Field name made lowercase.
+    excitement = models.TextField(db_column='Excitement', blank=True, null=True)  # Field name made lowercase.
+    platform = models.TextField(db_column='Platform')  # Field name made lowercase.
+    data_created = models.DateTimeField(db_column='Data_Created', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        db_table = 'Video_Games'

@@ -1,14 +1,18 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from .models import VideoGames
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+# from .serializers import VideoGamesSerializers
+# from .models import VideoGames
+# from itsdangerous import Serializer
 # Make a separate folder for views to organize functions
 
+
+#Set Debug to off, Switch back the database
 # Create your views here.
 def index(request):
     return render(request, 'index.html')
 
-def deeper(request):
-    return ({"message": 'Going deeper I see..'})
 
 def testingJSON(request):
     comments = [
@@ -26,15 +30,20 @@ def testingJSON(request):
 
     return JsonResponse({'comments': comments})
 
-def insertData(request):
-    if request.method == 'POST':
-        title = request.POST['title']
-        rating = request.POST['rating']
-        platform = request.POST['platform']
+# @api_view(['GET'])
+# def deeper(request):
+#     # person = {'name': 'Dah Baby', 'age': 16}
+#     games = VideoGames.objects.all()
 
-        newVideoGame = VideoGames(title = title, rating = rating, platform = platform)
-        newVideoGame.save()
+#     # many att. - True = normalize many items. False = normalize just one a two
+#     serializer = VideoGamesSerializers(games, many=True)
+#     return Response(serializer.data)
+
+# @api_view(['POST'])
+# def insertData(request):
+#     serializer = VideoGamesSerializers(data = request.data)
+#     if serializer.is_valid():
+#         serializer.save()
     
-    message = {"message": "Successfully created a review"}
-
-    return JsonResponse({'message': message})
+#     return Response(serializer.data)
+    

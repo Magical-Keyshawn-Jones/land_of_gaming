@@ -69,7 +69,8 @@ nav {
 	color: black;
 }
 
-.link:nth-child(1) {
+.link:nth-child(1),
+.link:nth-child(2) {
 	color: rgb(0, 247, 255);
 }
 

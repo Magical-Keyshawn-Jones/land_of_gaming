@@ -29,20 +29,20 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 CORS_ALLOW_ALL_ORIGINS = True
-APPEND_SLASH=False
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'djApp.apps.DjappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djApp.apps.DjappConfig',
     'corsheaders',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

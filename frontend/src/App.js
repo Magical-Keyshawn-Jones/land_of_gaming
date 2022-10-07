@@ -8,7 +8,8 @@ import {
 
 // Applications Imports
 import { 
-  HomePage, KnuckleBones, TicTacToe, Hangman
+  HomePage, KnuckleBones, TicTacToe, Hangman,
+  GamingForum
 } from './Storage/appExports'
 import { Link, Routes, Route } from 'react-router-dom'
 
@@ -37,7 +38,7 @@ import { Link, Routes, Route } from 'react-router-dom'
 //     res.json({message: 'Welcome to Land of Gaming!'})
 // })
 
-function App() {
+function App(props) {
   // Storing API data 
   // const [data, setData] = useState([])
 
@@ -58,7 +59,8 @@ function App() {
         {/* <h1>{data.Message}</h1> */}
         <h1>Games</h1>
         <nav>
-          <Link to='/' className='link homeButton' > Portfolio </Link>
+          <Link to='/GamingForum' className='link' > Gaming Forum </Link>
+          <Link to='/' className='link' > Portfolio </Link>
           <Link to='/KnuckleBones' className='link' > KnuckleBones </Link>
           <Link to='/TicTacToe' className='link' > TicTacToe </Link>
           <Link to='/Hangman' className='link' > Hangman </Link>
@@ -77,6 +79,7 @@ function App() {
         />} />
         <Route path='/TicTacToe' element={<TicTacToe/>} />
         <Route path='/Hangman' element={<Hangman/>} />
+        <Route path='/GamingForum' element={<GamingForum/>} />
       </Routes>
     </main>
   );

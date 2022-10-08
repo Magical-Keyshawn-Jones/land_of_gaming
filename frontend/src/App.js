@@ -59,7 +59,7 @@ function App(props) {
         {/* <h1>{data.Message}</h1> */}
         <h1>Games</h1>
         <nav>
-          <Link to='/GamingForum' className='link' > Gaming Forum </Link>
+          <Link to='/GamingForum/login' className='link' > Gaming Forum </Link>
           <Link to='/' className='link' > Portfolio </Link>
           <Link to='/KnuckleBones' className='link' > KnuckleBones </Link>
           <Link to='/TicTacToe' className='link' > TicTacToe </Link>
@@ -79,7 +79,7 @@ function App(props) {
         />} />
         <Route path='/TicTacToe' element={<TicTacToe/>} />
         <Route path='/Hangman' element={<Hangman/>} />
-        <Route path='/GamingForum' element={<GamingForum/>} />
+        <Route path='/GamingForum/*' element={<GamingForum/>} />
       </Routes>
     </main>
   );

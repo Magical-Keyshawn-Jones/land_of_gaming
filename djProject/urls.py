@@ -19,7 +19,7 @@ from djApp import views
 
 # Always put "/" at the end
 urlpatterns = [
-    path('', views.index, name = 'index'),
+    path('', include('djApp.urls')),
     path('testing/', include('djApp.urls')),
     path('admin/', admin.site.urls),
 ]

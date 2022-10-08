@@ -81,28 +81,12 @@ WSGI_APPLICATION = 'djProject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'Video Games',
-#         'USER': 'killz',
-#         'PASSWORD': '2',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd87nolot11jagi',
-        'USER': 'mqxlncwoybgqjp',
-        'PASSWORD': 'ce783a359e1cb5b832593bc3840e5fd2e70dce232c3e2652e45fa72424c9f59d',
-        'HOST': 'ec2-18-208-55-135.compute-1.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'Gaming.db',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

@@ -2,9 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
-# from .serializers import VideoGamesSerializers
-# from .models import VideoGames
-# from itsdangerous import Serializer
+from .serializers import VideoGamesSerializers
+from .models import VideoGames
 # Make a separate folder for views to organize functions
 
 
@@ -30,20 +29,20 @@ def testingJSON(request):
 
     return JsonResponse({'comments': comments})
 
-# @api_view(['GET'])
-# def deeper(request):
-#     # person = {'name': 'Dah Baby', 'age': 16}
-#     games = VideoGames.objects.all()
+@api_view(['GET'])
+def deeper(request):
+    # person = {'name': 'Dah Baby', 'age': 16}
+    games = VideoGames.objects.all()
 
-#     # many att. - True = normalize many items. False = normalize just one a two
-#     serializer = VideoGamesSerializers(games, many=True)
-#     return Response(serializer.data)
+    # many att. - True = normalize many items. False = normalize just one a two
+    serializer = VideoGamesSerializers(games, many=True)
+    return Response(serializer.data)
 
-# @api_view(['POST'])
-# def insertData(request):
-#     serializer = VideoGamesSerializers(data = request.data)
-#     if serializer.is_valid():
-#         serializer.save()
+@api_view(['POST'])
+def insertData(request):
+    serializer = VideoGamesSerializers(data = request.data)
+    if serializer.is_valid():
+        serializer.save()
     
-#     return Response(serializer.data)
+    return Response(serializer.data)
     

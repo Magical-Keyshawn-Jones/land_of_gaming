@@ -9,6 +9,7 @@ from .models import VideoGames
 import bcrypt
 import jwt
 from jwt.exceptions import ExpiredSignatureError
+# I don't know how to hide jwt key in production
 from .secrets import jwtKey
 # Make a separate folder for views to organize functions
 
@@ -28,6 +29,7 @@ payload_data = {
 token = jwt.encode(
     payload = payload_data,
     key = jwtKey,
+    # I don't know how to hide jwt key in production
     # Keep key secret
 )
 

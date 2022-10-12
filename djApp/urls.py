@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views 
+from .pathViews import gameViews, userViews
 
 urlpatterns = [
     # HomePages
@@ -9,9 +10,10 @@ urlpatterns = [
     path('TicTacToe/', views.index, name = 'TacTacToe'),
     path('Hangman/', views.index, name = 'Hangman'),
     # Endpoints
-    path('game/', views.deeper, name = 'deeper'),
-    path('game/', views.insertData, name = 'insertData'),
+    path('game/', gameViews.getGameReviews, name = 'getGameReviews'),
+    path('game/create', gameViews.createGameReview, name = 'createGameReviews'),
     # path('json/', views.testingJSON, name='testingJSON'),
-    path('user/register', views.registerUser, name = 'registerUser'),
-    path('user/login', views.loginUser, name = 'loginUser')
+    path('user/', userViews.getAll, name = 'getAll'),
+    path('user/register', userViews.registerUser, name = 'registerUser'),
+    path('user/login', userViews.loginUser, name = 'loginUser')
 ]

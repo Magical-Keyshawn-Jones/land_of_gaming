@@ -15,11 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from djApp import views 
 
 # Always put "/" at the end
 urlpatterns = [
     path('', include('djApp.urls')),
-    path('testing/', include('djApp.urls')),
     path('admin/', admin.site.urls),
 ]

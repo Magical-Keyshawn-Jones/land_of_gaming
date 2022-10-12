@@ -21,3 +21,13 @@ class VideoGames(models.Model):
     class Meta:
         managed = False
         db_table = 'Video Games'
+
+class Users(models.Model):
+    id = models.AutoField(db_column = 'Id', primary_key = True, blank = True)
+    username = models.CharField(db_column = 'Username', max_length = 50)
+    password = models.CharField(db_column = 'Password', max_length = 50)
+    date_created = models.DateTimeField(db_column = 'Date_Created', blank = True, null = True)
+
+    class Meta: 
+        managed = False
+        db_table = 'Users'

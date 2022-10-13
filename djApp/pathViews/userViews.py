@@ -1,5 +1,6 @@
 from django.http import JsonResponse
 from rest_framework.response import Response
+from rest_framework import status
 from rest_framework.decorators import api_view
 from ..serializers import UserSerializer, Users
 from jwt.exceptions import ExpiredSignatureError
@@ -22,15 +23,22 @@ import bcrypt
 def getAll(request):
     users = Users.objects.all()
     serializers = UserSerializer(users, many=True)
-    return Response(serializers.data)
+    return Response(serializers.data, status = status.HTTP_200_OK)
 
 # Deletes Specific User
 @api_view(['POST'])
 def deleteUser(request):
-    users = Users.objects.get(username=request.data['username'])
-    serializer = UserSerializer(users, many=False)
-    users.delete()
-    return Response(serializer.data)
+    try:
+        users = Users.objects.get(username=request.data['username'])
+        serializer = UserSerializer(users, many=False)
+        users.delete()
+        return JsonResponse({
+            'message': f"Successfully deleted user with username of {serializer.data['username']}"
+        }, status = status.HTTP_200_OK)
+    except:
+        return JsonResponse({
+            'message': f"User with username of {request.data['username']} does not exist"
+        }, status = status.HTTP_404_NOT_FOUND)
 
 # Create a new User
 @api_view(['POST'])
@@ -45,7 +53,7 @@ def registerUser(request):
         normalizer = UserSerializer(getUsers, many=False)
         return JsonResponse({
             'message': 'A user with that username already exist'
-        })
+        }, status = status.HTTP_400_BAD_REQUEST)
     except:
         hashPassword = bcrypt.hashpw(password.encode('UTF-8'), salt)
         stringHash = hashPassword.decode()
@@ -60,7 +68,7 @@ def registerUser(request):
             serializer.save()
         return JsonResponse({
             'message': 'Successfully created User!'
-        })
+        }, status = status.HTTP_201_CREATED)
 
 @api_view(['POST'])
 def loginUser(request):
@@ -72,7 +80,7 @@ def loginUser(request):
     except: 
         return JsonResponse({
             'message': 'Username or Password is Incorrect'
-        })
+        }, status = status.HTTP_400_BAD_REQUEST)
 
     serializer = UserSerializer(users, many=False)
     hashPassword = serializer.data['password']
@@ -82,11 +90,11 @@ def loginUser(request):
     if results == False:
         return JsonResponse({
             'message': 'Username or Password is Incorrect'
-        })
+        }, status = status.HTTP_400_BAD_REQUEST)
     elif len(serializer.data) == 0:
         return JsonResponse({
             'message': 'Username or Password is Incorrect'
-        }) 
+        }, status = status.HTTP_400_BAD_REQUEST) 
 
     payload_data = {
         'username': username,
@@ -108,4 +116,4 @@ def loginUser(request):
 
     return JsonResponse({
         'message': 'Welcome to Sylvia!'
-    })
+    }, status = status.HTTP_200_OK)

@@ -73,6 +73,14 @@ color2 {
     color: rgb(138, 0, 138);
 }
 
+.gamingLoginBody h4 {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    padding: .5rem;
+    text-align: center;
+    border: solid rgb(82, 0, 82) 3px;
+}
+
 .gamingLoginBody p {
     margin-bottom: 1rem;
     font-size: 1.3rem;

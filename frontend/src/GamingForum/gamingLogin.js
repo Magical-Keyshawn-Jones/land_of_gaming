@@ -19,6 +19,7 @@ export default function GamingLogin () {
 
     const [formValue, setFormValue, handleChanges] = useInput(initialValue)
     const [errorValue, setErrorValue] = useState(initialErrors)
+    const [loginMessage, setLoginMessage] = useState()
 
     // Validator Function
     function validator(name, value) {
@@ -62,13 +63,18 @@ export default function GamingLogin () {
         // axios.post('http://127.0.0.1:8000/user/register', formValue)
         axios.post('https://land-of-gaming.herokuapp.com/user/register', formValue)
         .then(res => {
-            console.log(res.data)
-            navigate('/forum')
+            setFormValue(initialValue)
+            setLoginMessage(res.data.message)
         })
         .catch(err => {
-            console.log('Error!', err)
+            setLoginMessage(err.response.data.message)
+            setFormValue(initialValue)
+            console.log({
+                message: err.response.data.message,
+                status: `${err.response.status}: ${err.response.statusText}`
+            })
         })
-
+        
     }
 
     function login(event) {
@@ -80,11 +86,16 @@ export default function GamingLogin () {
         // axios.post('http://127.0.0.1:8000/user/login', formValue)
         axios.post('https://land-of-gaming.herokuapp.com/user/login', formValue)
         .then(res => {
-            console.log(res.data)
+            setFormValue(initialValue)
             navigate('/forum')
         })
         .catch(err => {
-            console.log('Error!', err)
+            setFormValue(initialValue)
+            setLoginMessage(err.response.data.message)
+            console.log({
+                message: err.response.data.message,
+                status: `${err.response.status}: ${err.response.statusText}`
+            })
         })
     }
 
@@ -116,10 +127,11 @@ export default function GamingLogin () {
 
                         <div>
                             {/* <Link><button> Register </button></Link> */}
-                            <button onClick={()=>{register()}}> Register </button>
-                            <button onClick={()=>{login()}}> Login </button>
+                            <button onClick={(e)=>{register(e)}}> Register </button>
+                            <button onClick={(e)=>{login(e)}}> Login </button>
                         </div>
                     </div>
+                    {loginMessage ? <h4>{loginMessage}</h4> : ''}
                 </form>
                 <div className='loginImage'>
                     <img src={Forspoken} alt='Forspoken Wallpaper' />

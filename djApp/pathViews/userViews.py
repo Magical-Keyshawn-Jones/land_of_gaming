@@ -43,6 +43,9 @@ def registerUser(request):
     try:
         getUsers = Users.objects.get(username = username)
         normalizer = UserSerializer(getUsers, many=False)
+        return JsonResponse({
+            'message': 'A user with that username already exist'
+        })
     except:
         hashPassword = bcrypt.hashpw(password.encode('UTF-8'), salt)
         stringHash = hashPassword.decode()
@@ -55,10 +58,8 @@ def registerUser(request):
         serializer = UserSerializer(data = user)
         if serializer.is_valid():
             serializer.save()
-        return Response(serializer.data)
-    finally:
         return JsonResponse({
-            'message': 'A user with that username already exist'
+            'message': 'Successfully created User!'
         })
 
 @api_view(['POST'])

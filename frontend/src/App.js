@@ -1,7 +1,5 @@
 import './App.css';
 import { connect } from 'react-redux';
-import { useState, useEffect } from 'react'
-import axios from 'axios';
 import { 
   one, two, three, four, five, six
 } from './KnuckleBones/knuckleBonesLogic';
@@ -27,25 +25,11 @@ import { Link, Routes, Route } from 'react-router-dom'
   This could be optimized(honestly, look better) by not sending everything through the Parent and instead send to directly to the child I'm sending it to
 */
 
-// const express = require('express')
-
-// const server = express()
-
-// server.use(express.json())
-
-// server.use('/', (req, res) => {
-//     console.log('You did it!')
-//     res.json({message: 'Welcome to Land of Gaming!'})
-// })
-
 function App(props) {
-  // Storing API data 
-  // const [data, setData] = useState([])
   
   return (
     <main className='appBody'>
       <header className='navBar'>
-        {/* <h1>{data.Message}</h1> */}
         <h1>Games</h1>
         <nav>
           <Link to='/GamingForum/login' className='link' > Gaming Forum </Link>

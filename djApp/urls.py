@@ -14,6 +14,7 @@ urlpatterns = [
     path('game/create', gameViews.createGameReview, name = 'createGameReviews'),
     # path('json/', views.testingJSON, name='testingJSON'),
     path('user/', userViews.getAll, name = 'getAll'),
+    path('user/delete', userViews.deleteUser, name = 'deleteUser'),
     path('user/register', userViews.registerUser, name = 'registerUser'),
     path('user/login', userViews.loginUser, name = 'loginUser')
 ]

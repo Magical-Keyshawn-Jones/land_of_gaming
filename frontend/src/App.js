@@ -41,45 +41,7 @@ import { Link, Routes, Route } from 'react-router-dom'
 function App(props) {
   // Storing API data 
   // const [data, setData] = useState([])
-
-  // useEffect(()=>{
-  //   axios.get('http://127.0.0.1:8000/user/') 
-  //   // axios.get('http://land-of-gaming.herokuapp.com/game/') 
-  //   .then(res => {
-  //     // setData(res.data)
-  //     console.log(res.data)
-  //   })
-  //   .catch(err => {
-  //     console.log('Error!', err)
-  //   })
-
-  //   let user = {
-  //     username: 'Bellventus',
-  //     password: 'password123',
-  //     hash: false
-  //   }
-
-  //   axios.post('http://127.0.0.1:8000/user/register', user) 
-  //   // axios.get('http://land-of-gaming.herokuapp.com/game/') 
-  //   .then(res => {
-  //     // setData(res.data)
-  //     console.log(res.data)
-  //     user.password = res.data.password  
-  //     user.hash = true
-  //     axios.post('http://127.0.0.1:8000/user/register', user)
-  //     .then(res => {
-  //       console.log(res.data)
-  //     })
-  //     .catch(err => {
-  //       console.log('Error!', err)
-  //     })
-
-  //   })
-  //   .catch(err => {
-  //     console.log('Error!', err)
-  //   })
-  // },[])
-
+  
   return (
     <main className='appBody'>
       <header className='navBar'>

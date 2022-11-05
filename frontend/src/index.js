@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import { kbUserBoxes } from './Storage/Redux/Redux';
+import { kbUserBoxes, navTabs } from './Storage/Redux/Redux';
 
 // const express = require('express')
 
@@ -20,7 +20,8 @@ import { kbUserBoxes } from './Storage/Redux/Redux';
 
 export const storage = configureStore({
   reducer: {
-    kbUserBoxes: kbUserBoxes.reducer
+    kbUserBoxes: kbUserBoxes.reducer,
+    navTabs: navTabs.reducer,
   }
 })
 

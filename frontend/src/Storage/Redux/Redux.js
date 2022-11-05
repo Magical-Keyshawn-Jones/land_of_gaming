@@ -21,7 +21,29 @@ const kbUserBoxes = createSlice({
     }
 })
 
+// App.js
+const links = document.getElementsByClassName('link')
+const navTabs = createSlice({
+    name: 'navTabs',
+    initialState: links,
+
+    // Reducers set the Slice
+    reducers: {
+        grabTabs (state, action) {
+            state = links.length()
+            return state
+        },
+
+        testingResults (state, action) {
+            state = 'I love people'
+            return state
+        }
+    }
+})
+
 export const { setBox } = kbUserBoxes.actions
+export const { grabTabs, testingResults } = navTabs.actions
 export {
-    kbUserBoxes
+    kbUserBoxes,
+    navTabs,
 }

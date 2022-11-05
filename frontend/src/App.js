@@ -26,17 +26,32 @@ import { Link, Routes, Route } from 'react-router-dom'
 */
 
 function App(props) {
-  
+
+  const {
+    links
+  } = props
+
+  function currentPage(number,e) {
+
+    for (let x = 0; x < links.length; x++) {
+      if (x === number) {
+        links[x].classList.add('whiteLink')
+      } else {
+        links[x].classList.remove('whiteLink')
+      }
+    }
+  }
+
   return (
     <main className='appBody'>
       <header className='navBar'>
         <h1>Games</h1>
         <nav>
-          <Link to='/GamingForum/login' className='link' > Gaming Forum </Link>
-          <Link to='/' className='link' > Portfolio </Link>
-          <Link to='/KnuckleBones' className='link' > KnuckleBones </Link>
-          <Link to='/TicTacToe' className='link' > TicTacToe </Link>
-          <Link to='/Hangman' className='link' > Hangman </Link>
+          <Link to='/GamingForum/login' className='link' onClick={()=>{currentPage(0)}} > Gaming Forum </Link>
+          <Link to='/' className='link whiteLink' onClick={()=>{currentPage(1)}} > Portfolio </Link>
+          <Link to='/KnuckleBones' className='link' onClick={()=>{currentPage(2)}} > KnuckleBones </Link>
+          <Link to='/TicTacToe' className='link' onClick={()=>{currentPage(3)}} > TicTacToe </Link>
+          <Link to='/Hangman' className='link' onClick={()=>{currentPage(4)}} > Hangman </Link>
         </nav>
       </header>
 
@@ -61,7 +76,7 @@ function App(props) {
 // Redux Storage Container 
 function GrabbingStorage(state) {
   return {
-    kbUserBoxes: state.kbUserBoxes
+    links: state.navTabs,
   }
 }
 

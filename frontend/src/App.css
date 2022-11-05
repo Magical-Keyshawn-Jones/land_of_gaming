@@ -67,6 +67,11 @@ nav {
 	text-decoration: none;
 	font-size: 1.7rem;
 	color: black;
+	/* color: white; */
+}
+
+.whiteLink {
+	color: rgb(238, 255, 0) !important;
 }
 
 .link:nth-child(1),

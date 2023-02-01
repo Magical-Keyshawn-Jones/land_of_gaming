@@ -60,8 +60,8 @@ export default function GamingLogin () {
             return
         }
 
-        // axios.post('http://127.0.0.1:8000/user/register', formValue)
-        axios.post('https://land-of-gaming.herokuapp.com/user/register', formValue)
+        axios.post('http://127.0.0.1:8000/user/register', formValue)
+        // axios.post('https://land-of-gaming.herokuapp.com/user/register', formValue)
         .then(res => {
             setFormValue(initialValue)
             setLoginMessage(res.data.message)
@@ -83,8 +83,8 @@ export default function GamingLogin () {
             return
         }
 
-        // axios.post('http://127.0.0.1:8000/user/login', formValue)
-        axios.post('https://land-of-gaming.herokuapp.com/user/login', formValue)
+        axios.post('http://127.0.0.1:8000/user/login', formValue)
+        // axios.post('https://land-of-gaming.herokuapp.com/user/login', formValue)
         .then(res => {
             setFormValue(initialValue)
             navigate('/forum')

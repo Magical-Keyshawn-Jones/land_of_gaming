@@ -1,6 +1,6 @@
 This website is the host to all my games. I will try to write the same game in different languages to better my skills. I'm going to practice documentation.
 
-Website: https://land-of-gaming.herokuapp.com/
+Website: https://land-of-gaming.vercel.app/
 
 Folders:
 
